@@ -124,6 +124,7 @@ def buy_bond(exchange, start_position, ORDERS):
     sreturn_exchange = read_from_exchange(exchange)
 
     def buyer(return_exchange, BUYNUM, ORDERID, SORDERID):
+        print("The exchange replied:", return_exchange, file=sys.stderr)
         if BUYNUM < 50:
             write_to_exchange(exchange,
                               {"type": "add", "order_id": ORDERID, "symbol": "BOND", "dir": "BUY", "price": 999,
@@ -146,6 +147,7 @@ def buy_bond(exchange, start_position, ORDERS):
         return read_from_exchange(exchange), BUYNUM, ORDERID
 
     def seller(return_exchange, SELLNUM, ORDERID, SORDERID):
+        print("The exchange replied:", return_exchange, file=sys.stderr)
         if SELLNUM < 50:
             write_to_exchange(exchange,
                               {"type": "add", "order_id": ORDERID, "symbol": "BOND", "dir": "SELL", "price": 1001,
