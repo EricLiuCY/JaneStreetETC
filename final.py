@@ -89,7 +89,7 @@ def trade_xlf(exchange):
             print("Decision to do Nothing")
             return
 
-        for (k,v) in range(len(position)):
+        for (k,v) in position:
             if v >= 50:
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": k, "dir": "SELL",
                                              "price": prices[k][0],
