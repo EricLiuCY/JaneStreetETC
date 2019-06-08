@@ -119,6 +119,7 @@ def trade_xlf(exchange, prices):
                 while True:
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
+                        print("Got xlf ack")
                         wait_for_fill(30, read_exchange)
                         break
                     elif read_exchange['type'] == 'book':
