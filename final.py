@@ -90,25 +90,26 @@ def trade_xlf(exchange):
             return
 
         for k,v in position.items():
-            if v >= 50:
-                write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": k, "dir": "SELL",
-                                             "price": prices[k][0],
-                                             "size": 30})
-                position[k] -= 30
+            if k != 'USD':
+                if v >= 50:
+                    write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": k, "dir": "SELL",
+                                                 "price": prices[k][0],
+                                                 "size": 30})
+                    position[k] -= 30
 
-                while True:
-                    read_exchange = read_from_exchange(exchange)
+                    while True:
+                        read_exchange = read_from_exchange(exchange)
 
-                    if read_exchange['type'] == 'reject':
-                        print("Rejected, returning")
-                        break
-                    elif read_exchange['type'] == 'ack':
-                        print("{} SELL ACKNOWLEDGED".format(k))
-                        break
-                    # elif read_exchange['type'] == 'fill':
-                    #     print("BOND SELL FILLED")
-                    #     break
-            if v <= -50:
+                        if read_exchange['type'] == 'reject':
+                            print("Rejected, returning")
+                            break
+                        elif read_exchange['type'] == 'ack':
+                            print("{} SELL ACKNOWLEDGED".format(k))
+                            break
+                        # elif read_exchange['type'] == 'fill':
+                        #     print("BOND SELL FILLED")
+                        #     break
+                if v <= -50:
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": k, "dir": "BUY",
                                              "price": prices[k][0],
                                              "size": 30})
