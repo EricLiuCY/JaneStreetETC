@@ -155,6 +155,9 @@ def redo_position(exchange):
     if pos_bond > 60 & pos_gs > 70 & pos_ms > 60 & pos_wfc > 70:
         write_to_exchange(exchange,
                           {"type": "convert", "order_id": generate_ID(), "symbol": "XLF", "dir": "BUY", "size": 10})
+    if pos_xlf > 88:
+        write_to_exchange(exchange,
+                          {"type": "convert", "order_id": generate_ID(), "symbol": "XLF", "dir": "SELL", "size": 10})
 
 
 # ~~~~~============== MAIN LOOP ==============~~~~~
