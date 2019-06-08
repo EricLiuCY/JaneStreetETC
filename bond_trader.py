@@ -44,6 +44,8 @@ def buy_bond(exchange, start_position, ORDERS):
     return_exchange = read_from_exchange(exchange)
     if return_exchange['type'] == 'book':
         if return_exchange['symbol'] == 'BOND':
+            print("GOT BOND: ")
+            print("The exchange replied:", return_exchange, file=sys.stderr)
             max_bond_buy = 0
             max_bond_sell = 0
             bond_buy = -1
