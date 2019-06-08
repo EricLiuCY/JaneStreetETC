@@ -159,7 +159,7 @@ def redo_position(exchange):
         write_to_exchange(exchange,
                           {"type": "convert", "order_id": generate_ID(), "symbol": "XLF", "dir": "SELL", "size": 10})
 
-    if pos_xlf < 90:
+    if pos_xlf < -90:
         write_to_exchange(exchange,
                           {"type": "convert", "order_id": generate_ID(), "symbol": "XLF", "dir": "BUY", "size": 10})
     if pos_xlf > 90:
