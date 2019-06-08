@@ -328,12 +328,12 @@ def main():
     #     print("waiting to begin")
     #     dispatcher_init(exchange)
 
-    while xlf_buy ==0 or xlf_ema ==0 or bond_buy ==0 or bond_sell ==0 or gs_buy ==0 or gs_sell !=0 or ms_buy ==0\
-            or ms_sell ==0 or wfc_buy ==0 or wfc_sell ==0:
-        print("waiting to begin")
-        redo_position(exchange)
-        dispatcher_init(exchange)
-        time.sleep(0.1)
+    # while xlf_buy ==0 or xlf_ema ==0 or bond_buy ==0 or bond_sell ==0 or gs_buy ==0 or gs_sell !=0 or ms_buy ==0\
+    #         or ms_sell ==0 or wfc_buy ==0 or wfc_sell ==0:
+    #     print("waiting to begin")
+    #     redo_position(exchange)
+    #     dispatcher_init(exchange)
+    #     time.sleep(0.1)
 
     while True:
         print("begins")
