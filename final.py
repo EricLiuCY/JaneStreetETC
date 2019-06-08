@@ -74,7 +74,7 @@ def trade_xlf(exchange):
             max_sell = max(max_sell, i[1])
             if max_sell == i[1]:
                 avg_sell = i[0]
-        prices[read_exchange['symbol']] = (avg_buy, avg_sell, None)
+        prices[read_exchange['symbol']] = (avg_buy, avg_sell, prices[read_exchange['symbol']][2] if  prices[read_exchange['symbol']][2] else None)
         return
 
     if len(prices) == 7:
@@ -297,7 +297,7 @@ def trade_xlf(exchange):
                         print("WFC BUY FILLED")
                         break
 
-            if position['WFC'] >= -80 and position['MS'] >= -70 and position['GS'] >= -80 and position['BOND'] >= -70 and position['XLF'] <= 50:
+            if position['WFC'] >= -80 and position['MS'] >= -70 and position['GS'] >= -80 and position['BOND'] >= -70 and position['XLF'] <= 70:
 
                 write_to_exchange(exchange, {"type": "convert", "order_id": generate_ID(), "symbol": "XLF",
                                              "dir": "BUY", "size": 10})
