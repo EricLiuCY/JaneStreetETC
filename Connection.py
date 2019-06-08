@@ -283,11 +283,11 @@ def main():
     while xlf_buy is None or xlf_ema is None or bond_buy is None or bond_sell is None or gs_buy is None or gs_sell is None or ms_buy is None\
             or ms_sell is None or wfc_buy is None or wfc_sell is None:
         print("waiting to begin")
-        dispatcher(exchange)
+        dispatcher_init(exchange)
 
     while True:
         print("begins")
-        dispatcher_init(exchange)
+        dispatcher(exchange)
 
 
 if __name__ == "__main__":
