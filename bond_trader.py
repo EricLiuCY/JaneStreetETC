@@ -39,7 +39,7 @@ def write_to_exchange(exchange, obj):
 def read_from_exchange(exchange):
     return json.loads(exchange.readline())
 
-def buy_bond(exchange, start_position):
+def buy_bond(exchange, start_position, ORDERS):
     return_exchange = read_from_exchange(exchange)
     if return_exchange['type'] == 'book':
         if return_exchange['symbol'] == 'BOND':
@@ -56,14 +56,24 @@ def buy_bond(exchange, start_position):
                 if max_bond_sell == return_exchange['sell'][i][1]:
                     bond_sell = return_exchange['sell'][i][0]
             (decision, profitps) = bond_pricing(bond_buy, bond_sell, 3)
-            print(decision)
-            print(bond_buy)
-            print(bond_sell)
-            
-    print("The exchange replied:", return_exchange, file=sys.stderr)
+            # print(decision)
+            # print(bond_buy)
+            # print(bond_sell)
+
+            if decision == "SELL":
+                write_to_exchange(exchange, {"type": "add", "order_id": ORDERS, "symbol": "BOND", "dir": "SELL", "price": bond_buy, "size": max_bond_buy})
+                sell_return = read_from_exchange(exchange)
+                print("SELL REPLY:", sell_return, file=sys.stderr)
+                ORDERS += 1
+            if decision == "BUY":
+                write_to_exchange(exchange, {"type": "add", "order_id": ORDERS, "symbol": "BOND", "dir": "BUY", "price": bond_sell, "size": max_bond_sell})
+                sell_return = read_from_exchange(exchange)
+                print("SELL REPLY:", sell_return, file=sys.stderr)
+                ORDERS += 1
+    # print("The exchange replied:", return_exchange, file=sys.stderr)
 
 def main():
-    ORDERS = OrderedDict()
+    ORDERS = 0
     exchange = connect()
     # if os.path.isfile('./BOND_HISTORY'):
     #     f = open('BOND_HISTORY', 'r')
@@ -73,7 +83,7 @@ def main():
     start_position = read_from_exchange(exchange)
     try:
         while True:
-            buy_bond(exchange, start_position)
+            buy_bond(exchange, start_position, ORDERS)
     except KeyboardInterrupt:
         # f = open('BOND_HISTORY', 'w')
         # pickle.dump(repr(ORDERS), f)
