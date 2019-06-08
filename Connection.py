@@ -274,11 +274,20 @@ def main():
     exchange = connect()
     write_to_exchange(exchange, {"type": "hello", "team": team_name.upper()})
 
-    for i in range(0, 15):
+    global xlf_buy, xlf_ema, xlf_sell
+    global bond_buy, bond_sell
+    global gs_buy, gs_sell
+    global ms_buy, ms_sell
+    global wfc_buy, wfc_sell
+
+    while xlf_buy is None or xlf_ema is None or bond_buy is None or bond_sell is None or gs_buy is None or gs_sell is None or ms_buy is None\
+            or ms_sell is None or wfc_buy is None or wfc_sell is None:
+        print("waiting to begin")
         dispatcher(exchange)
 
     while True:
-        dispatcher_init()
+        print("begins")
+        dispatcher_init(exchange)
 
 
 if __name__ == "__main__":
