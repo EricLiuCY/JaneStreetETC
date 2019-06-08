@@ -14,13 +14,13 @@ from ETF_Arb import etf_decision
 team_name="loremipsum"
 # This variable dictates whether or not the bot is connecting to the prod
 # or test exchange. Be careful with this switch!
-test_mode = False
+test_mode = True
 
 # This setting changes which test exchange is connected to.
 # 0 is prod-like
 # 1 is slower
 # 2 is empty
-test_exchange_index=0
+test_exchange_index=1
 prod_exchange_hostname="production"
 
 port=25000 + (test_exchange_index if test_mode else 0)
