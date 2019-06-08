@@ -128,8 +128,6 @@ def read_from_exchange(exchange):
             elif dir == "BUY":
                 pos_xlf += size
 
-    decision, ema = etf_decision()
-
     return json.loads(exchange.readline())
 
 
