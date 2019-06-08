@@ -152,10 +152,17 @@ def read_from_exchange(exchange):
 
 
 def redo_position(exchange):
-    if pos_bond > 60 & pos_gs > 70 & pos_ms > 60 & pos_wfc > 70:
+    if pos_bond > 70 | pos_gs > 80 | pos_ms > 70 | pos_wfc > 80:
         write_to_exchange(exchange,
                           {"type": "convert", "order_id": generate_ID(), "symbol": "XLF", "dir": "BUY", "size": 10})
-    if pos_xlf > 88:
+    if pos_bond < -70 | pos_gs < -80 | pos_ms < -70 | pos_wfc < -80:
+        write_to_exchange(exchange,
+                          {"type": "convert", "order_id": generate_ID(), "symbol": "XLF", "dir": "SELL", "size": 10})
+
+    if pos_xlf < 90:
+        write_to_exchange(exchange,
+                          {"type": "convert", "order_id": generate_ID(), "symbol": "XLF", "dir": "BUY", "size": 10})
+    if pos_xlf > 90:
         write_to_exchange(exchange,
                           {"type": "convert", "order_id": generate_ID(), "symbol": "XLF", "dir": "SELL", "size": 10})
 
