@@ -90,10 +90,10 @@ def trade_xlf(exchange):
             return
 
 
-        if position['XLF'] >= 50 or (position['GS'] <= -50 and position['MS'] <= -50 and position['WFC'] <= -50 and position['BOND'] <= -50):
+        if position['XLF'] >= 50 or (position['GS'] <= -50 or position['MS'] <= -50 or position['WFC'] <= -50 or position['BOND'] <= -50):
             decision = 'BUY'
 
-        if position['XLF'] <= -50 or (position['GS'] >= 50 and position['MS'] >= 50 and position['WFC'] >= 50 and position['BOND'] >= 50):
+        if position['XLF'] <= -50 or (position['GS'] >= 50 or position['MS'] >= 50 or position['WFC'] >= 50 or position['BOND'] >= 50):
             decision = 'SELL'
 
         if decision == 'BUY':
