@@ -2,7 +2,11 @@ import get_EMA as EMA
 
 
 def etf_decision(etf, bond, gs, ms, wfc):
-
+    print(etf)
+    print(bond)
+    print(gs)
+    print(ms)
+    print(wfc)
     bond_fair = EMA.get_EMA(bond[0], bond[1])
     gs_fair = EMA.get_EMA(gs[0], gs[0])
     ms_fair = EMA.get_EMA(ms[0], ms[0])
@@ -12,9 +16,9 @@ def etf_decision(etf, bond, gs, ms, wfc):
     etf_to_buy = etf[0]
     etf_to_sell = etf[1]
 
-    if etf_to_buy < etf_fair:
+    if etf_to_buy > etf_fair:
         return "BUY", EMA
-    elif etf_to_sell > etf_fair:
+    elif etf_to_sell < etf_fair:
         return "SELL", EMA
     else:
         return "NOTHING", EMA
