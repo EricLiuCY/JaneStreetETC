@@ -15,4 +15,15 @@ Code Flow:
 
 
 
-BOND : [BUY, SELL, EMA]
+"BUY"
+
+BUY XLF
+Convert XLF to Stocks
+SELL everything converted
+
+
+
+"SELL"
+BUY the common stock
+Convert common stocks to XLF
+sell XLF
