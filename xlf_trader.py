@@ -133,7 +133,7 @@ def trade_xlf(exchange, prices):
                     elif read_exchange['type'] == 'book':
                         price_updater()
 
-                write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "BOND", "dir": "BUY", "price": prices['BOND'][0],
+                write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "BOND", "dir": "SELL", "price": prices['BOND'][0],
                                    "size": 3})
                 while True:
                     read_exchange = read_from_exchange(exchange)
@@ -142,7 +142,7 @@ def trade_xlf(exchange, prices):
                         break
                     elif read_exchange['type'] == 'book':
                         price_updater()
-                write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "GS", "dir": "BUY",
+                write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "GS", "dir": "SELL",
                                              "price": prices['GS'][0],
                                              "size": 2})
                 while True:
@@ -152,7 +152,7 @@ def trade_xlf(exchange, prices):
                         break
                     elif read_exchange['type'] == 'book':
                         price_updater()
-                write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "MS", "dir": "BUY",
+                write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "MS", "dir": "SELL",
                                              "price": prices['MS'][0],
                                              "size": 3})
                 while True:
@@ -162,7 +162,7 @@ def trade_xlf(exchange, prices):
                         break
                     elif read_exchange['type'] == 'book':
                         price_updater()
-                write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "WTC", "dir": "BUY",
+                write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "WTC", "dir": "SELL",
                                              "price": prices['WTC'][0],
                                              "size": 2})
                 while True:
