@@ -55,7 +55,7 @@ def read_from_exchange(exchange):
 
 def trade_xlf(exchange, prices):
     read_exchange = read_from_exchange(exchange)
-    print("The exchange gave:", read_exchange, file=sys.stderr)
+    # print("The exchange gave:", read_exch/ange, file=sys.stderr)
     def price_updater():
         buys = read_exchange['buy']
         sells = read_exchange['sell']
