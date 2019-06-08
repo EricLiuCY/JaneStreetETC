@@ -18,8 +18,16 @@ bond_sell_count = 50
 xlf_buy   = None
 xlf_sell  = None
 xlf_ema   = None
+
 bond_buy  = None
 bond_sell = None
+
+valbz_buy = None
+valbz_sell = None
+
+vale_buy = None
+vale_sell = None
+
 gs_buy    = None
 gs_sell   = None
 ms_buy    = None
@@ -112,7 +120,23 @@ def dispatcher(exchange):
     type = message['type']
     global bond_buy_count, bond_sell_count
 
+    global xlf_buy, xlf_ema, xlf_sell
+    global bond_buy, bond_sell
+    global valbz_buy, valbz_sell
+    global vale_buy, vale_sell
+    global gs_buy, gs_sell
+    global ms_buy, ms_sell
+    global wfc_buy, wfc_sell
+
     if type == "book":
+        symbol = message['symbol']
+        buy = message['buy']
+        sell = message['sell']
+        if symbol == "BOND":
+            bond_sell = buy
+
+
+
         print("it works hahahah")
 
     # BOND
