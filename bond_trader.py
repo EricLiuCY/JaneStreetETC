@@ -156,7 +156,7 @@ def buy_bond(exchange, start_position, ORDERS, prices):
                     avg_sell = i[0]
             prices[return_exchange['symbol']] = (avg_buy, avg_sell, None)
         elif return_exchange['type'] == 'fill':
-            if return_exchange['order_id'] == ORDERID:
+            if return_exchange['order_id'] == 23491:
                 BUYNUM -= return_exchange['size']
                 print("BUY ORDER FULFILLED AT PRICE: " + str(return_exchange['price']) + " OF SIZE: " + str(
                     return_exchange['size']))
@@ -199,7 +199,7 @@ def buy_bond(exchange, start_position, ORDERS, prices):
                 print("SELL ORDER ACKNOWLEDGED")
                 return read_from_exchange(exchange), SELLNUM, ORDERID
         elif return_exchange['type'] == 'fill':
-            if return_exchange['order_id'] == ORDERID:
+            if return_exchange['order_id'] == 93495:
                 SELLNUM -= return_exchange['size']
                 print("SELL ORDER FULFILLED AT PRICE: " + str(return_exchange['price']) + " OF SIZE: " + str(
                     return_exchange['size']))
