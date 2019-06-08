@@ -39,13 +39,11 @@ def write_to_exchange(exchange, obj):
 def read_from_exchange(exchange):
     return json.loads(exchange.readline())
 
-
-ORDERS = OrderedDict()
-
 def buy_bond(exchange, start_position):
     print("The exchange replied:", read_from_exchange(exchange), file=sys.stderr)
 
 def main():
+    ORDERS = OrderedDict()
     exchange = connect()
     if os.path.isfile('./BOND_HISTORY'):
         f = open('BOND_HISTORY', 'r')
@@ -60,15 +58,6 @@ def main():
         f = open('BOND_HISTORY', 'w')
         pickle.dump(ORDERS, f)
         f.close()
-
-
-
-
-
-
-
-
-
 
 if __name__ == "__main__":
     main()
