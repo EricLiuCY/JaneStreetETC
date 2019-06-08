@@ -178,10 +178,9 @@ def trade_xlf(exchange):
                         return
                     elif read_exchange['type'] == 'ack':
                         print("GS SELL ACKNOWLEDGED")
+                    elif read_exchange['type'] == 'fill':
+                        print("GS SELL FILLED")
                         break
-                    # elif read_exchange['type'] == 'fill':
-                    #     print("GS SELL FILLED")
-                    #     break
 
             if position['MS'] >= -50 and position['MS'] <= 70:
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "MS", "dir": "SELL",
@@ -197,10 +196,9 @@ def trade_xlf(exchange):
                         return
                     elif read_exchange['type'] == 'ack':
                         print("MS SELL ACKNOWLEDGED")
+                    elif read_exchange['type'] == 'fill':
+                        print("MS SELL FILLED")
                         break
-                    # elif read_exchange['type'] == 'fill':
-                    #     print("MS SELL FILLED")
-                    #     break
 
             if position['WFC'] >= -50 and position['WFC'] <= 80:
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "WFC", "dir": "SELL",
@@ -216,10 +214,9 @@ def trade_xlf(exchange):
                         return
                     elif read_exchange['type'] == 'ack':
                         print("WFC SELL ACKNOWLEDGED")
+                    elif read_exchange['type'] == 'fill':
+                        print("WFC SELL FILLED")
                         break
-                    # elif read_exchange['type'] == 'fill':
-                    #     print("WFC SELL FILLED")
-                    #     break
 
             print("Buy Finished")
             return
@@ -260,10 +257,9 @@ def trade_xlf(exchange):
                         return
                     elif read_exchange['type'] == 'ack':
                         print("GS BUY ACKNOWLEDGED")
+                    elif read_exchange['type'] == 'fill':
+                        print("GS BUY FILLED")
                         break
-                    # elif read_exchange['type'] == 'fill':
-                    #     print("GS BUY FILLED")
-                    #     break
 
             if position['MS'] <= -50:
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "MS", "dir": "BUY",
@@ -279,10 +275,9 @@ def trade_xlf(exchange):
                         return
                     elif read_exchange['type'] == 'ack':
                         print("MS BUY ACKNOWLEDGED")
+                    elif read_exchange['type'] == 'fill':
+                        print("MS BUY FILLED")
                         break
-                    # elif read_exchange['type'] == 'fill':
-                    #     print("MS BUY FILLED")
-                    #     break
 
             if position['WFC'] <= -50:
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "WFC", "dir": "BUY",
@@ -298,10 +293,9 @@ def trade_xlf(exchange):
                         return
                     elif read_exchange['type'] == 'ack':
                         print("WFC BUY ACKNOWLEDGED")
+                    elif read_exchange['type'] == 'fill':
+                        print("WFC BUY FILLED")
                         break
-                    # elif read_exchange['type'] == 'fill':
-                    #     print("WFC BUY FILLED")
-                    #     break
 
             if position['WFC'] >= -80 and position['MS'] >= -70 and position['GS'] >= -80 and position['BOND'] >= -70:
 
