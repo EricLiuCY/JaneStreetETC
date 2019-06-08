@@ -185,6 +185,7 @@ def trade_xlf(exchange, prices):
                 print("Current prices: " + repr(prices))
 
         else:
+            print("fuck")
             trade_xlf(exchange, prices)
 
 def main():
