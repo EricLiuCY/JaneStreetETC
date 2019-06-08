@@ -101,7 +101,7 @@ def trade_xlf(exchange, prices):
         if read_exchange['type'] == 'book':
             price_updater()
 
-        if len(prices) > 5:
+        if len(prices) > 6:
             decision, ema = etf_decision(prices['XLF'], prices['BOND'], prices['GS'], prices['MS'], prices['WFC'])
             prices['XLF'] = (prices['XLF'][0], prices['XLF'][1], ema)
 
