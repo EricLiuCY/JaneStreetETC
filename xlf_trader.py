@@ -14,6 +14,8 @@ import random
 ID_array = []
 
 
+
+
 def generate_ID():
 
     ID = random.randint(0, 100000)
@@ -195,6 +197,11 @@ def trade_xlf(exchange, prices):
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'reject':
                         print("The exchange REJECTED:", read_exchange, file=sys.stderr)
+                        if read_exchange['error'] == 'LIMIT:POSITION':
+                            write_to_exchange(exchange,
+                                              {"type": "add", "order_id": generate_ID(), "symbol": "BOND", "dir": "SELL",
+                                               "price": prices['BOND'][0],
+                                               "size": 15})
                     if read_exchange['type'] == 'ack':
                         print("Got bbuy ack")
                         wait_for_fill(30, read_exchange)
