@@ -184,6 +184,26 @@ def trade_xlf(exchange, prices):
                 print("The exchange gave:", read_exchange, file=sys.stderr)
                 print("Current prices: " + repr(prices))
 
+                write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "BOND", "dir": "BUY",
+                                             "price": prices['BOND'][1],
+                                             "size": 3})
+                write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "GS", "dir": "BUY",
+                                             "price": prices['GS'][1],
+                                             "size": 2})
+                write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "MS", "dir": "BUY",
+                                             "price": prices['MS'][1],
+                                             "size": 3})
+                write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "WFC", "dir": "BUY",
+                                             "price": prices['WFC'][1],
+                                             "size": 2})
+                write_to_exchange(exchange,
+                                  {"type": "convert", "order_id": generate_ID(), "symbol": "XLF", "dir": "BUY",
+                                   "size": 10})
+                write_to_exchange(exchange,
+                                  {"type": "add", "order_id": generate_ID(), "symbol": "XLF", "dir": "SELL",
+                                   "price": prices['XLF'][0],
+                                   "size": 10})
+
         else:
             read_exchange = read_from_exchange(exchange)
             if read_exchange['type'] == 'book':
