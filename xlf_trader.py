@@ -60,10 +60,8 @@ def trade_xlf(exchange, prices):
     def price_updater():
         buys = read_exchange['buy']
         sells = read_exchange['sell']
-
         avg_buy = -1
         avg_sell = -1
-
         max_buy = 0
         max_sell = 0
         for i in buys:
@@ -75,14 +73,10 @@ def trade_xlf(exchange, prices):
             if max_sell == i[1]:
                 avg_sell = i[0]
         prices[read_exchange['symbol']] = (avg_buy, avg_sell, None)
-        # print("Price Updated")
-        # print("Prices updated to: " + repr(prices))
-        # print("The exchange gave:", read_exchange, file=sys.stderr)
         return
 
     def wait_for_fill(MAX, currread):
         print("Waiting for fill")
-
         counter = 0
         while True:
             if counter > MAX:
@@ -91,7 +85,6 @@ def trade_xlf(exchange, prices):
                 return
             if currread['type'] == 'fill':
                 print("Fill reached")
-                # print("The exchange gave:", currread, file=sys.stderr)
                 return
             if currread['type'] == 'book':
                 price_updater()
@@ -144,7 +137,7 @@ def trade_xlf(exchange, prices):
                         price_updater()
 
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "BOND", "dir": "SELL", "price": prices['BOND'][0],
-                                   "size": 3})
+                                   "size": 30})
                 while True:
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
@@ -155,7 +148,7 @@ def trade_xlf(exchange, prices):
                         price_updater()
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "GS", "dir": "SELL",
                                              "price": prices['GS'][0],
-                                             "size": 2})
+                                             "size": 20})
                 while True:
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
@@ -166,7 +159,7 @@ def trade_xlf(exchange, prices):
                         price_updater()
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "MS", "dir": "SELL",
                                              "price": prices['MS'][0],
-                                             "size": 3})
+                                             "size": 30})
                 while True:
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
@@ -177,7 +170,7 @@ def trade_xlf(exchange, prices):
                         price_updater()
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "WFC", "dir": "SELL",
                                              "price": prices['WFC'][0],
-                                             "size": 2})
+                                             "size": 20})
                 print("Selling WFC at " + str(prices['WFC'][0]))
                 while True:
                     read_exchange = read_from_exchange(exchange)
@@ -283,7 +276,7 @@ def trade_xlf(exchange, prices):
                 write_to_exchange(exchange,
                                   {"type": "add", "order_id": generate_ID(), "symbol": "XLF", "dir": "SELL",
                                    "price": prices['XLF'][0],
-                                   "size": 1})
+                                   "size": 10})
                 while True:
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
