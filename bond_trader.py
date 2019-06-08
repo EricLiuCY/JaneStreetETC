@@ -40,7 +40,27 @@ def read_from_exchange(exchange):
     return json.loads(exchange.readline())
 
 def buy_bond(exchange, start_position):
-    print("The exchange replied:", read_from_exchange(exchange), file=sys.stderr)
+    return_exchange = read_from_exchange(exchange)
+    if return_exchange['type'] == 'book':
+        if return_exchange['symbol'] == 'BOND':
+            max_bond_buy = 0
+            max_bond_sell = 0
+            bond_buy = -1
+            bond_sell = -1
+            for i in range(len(return_exchange['buy'])):
+                max_bond_buy = max(return_exchange['buy'][i][1], max_bond_buy)
+                if max_bond_buy == return_exchange['buy'][i][1]:
+                    bond_buy = return_exchange['buy'][i][0]
+            for i in range(len(return_exchange['sell'])):
+                max_bond_sell = max(return_exchange['sell'][i][1], max_bond_sell)
+                if max_bond_sell == return_exchange['sell'][i][1]:
+                    bond_sell = return_exchange['sell'][i][0]
+            (decision, profitps) = bond_pricing(bond_buy, bond_sell, 3)
+            print(decision)
+            print(bond_buy)
+            print(bond_sell)
+            
+    print("The exchange replied:", return_exchange, file=sys.stderr)
 
 def main():
     ORDERS = OrderedDict()
