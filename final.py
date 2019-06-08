@@ -125,6 +125,24 @@ def trade_xlf(exchange):
                     elif read_exchange['type'] == 'ack':
                         print("XLF CONVERT ACKNOWLEDGED")
                         break
+            else:
+                write_to_exchange(exchange, {"type": "convert", "order_id": generate_ID(), "symbol": "XLF",
+                                             "dir": "SELL", "size": 10})
+                position['XLF'] -= 10
+                position['GS'] += 20
+                position['WFC'] += 20
+                position['BOND'] += 30
+                position['MS'] += 30
+
+                while True:
+                    read_exchange = read_from_exchange(exchange)
+
+                    if read_exchange['type'] == 'reject':
+                        print("Rejected, returning")
+                        return
+                    elif read_exchange['type'] == 'ack':
+                        print("XLF CONVERT ACKNOWLEDGED")
+                        break
 
             if position['BOND'] >= -70:
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "BOND", "dir": "SELL",
