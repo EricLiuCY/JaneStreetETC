@@ -120,7 +120,7 @@ def buy_bond(exchange, start_position, ORDERS):
 
     return_exchange = read_from_exchange(exchange)
     write_to_exchange(exchange,
-                      {"type": "add", "order_id": SORDERID, "symbol": "BOND", "dir": "BUY", "price": 999, "size": SELLNUM})
+                      {"type": "add", "order_id": SORDERID, "symbol": "BOND", "dir": "SELL", "price": 1001, "size": SELLNUM})
     sreturn_exchange = read_from_exchange(exchange)
 
     def buyer(return_exchange, BUYNUM, ORDERID, SORDERID):
