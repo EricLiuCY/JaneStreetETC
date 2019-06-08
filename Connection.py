@@ -333,13 +333,13 @@ def main():
         print("waiting to begin")
         redo_position(exchange)
         dispatcher_init(exchange)
-        time.sleep(0.5)
+        time.sleep(0.1)
 
     while True:
         print("begins")
         redo_position(exchange)
         dispatcher(exchange)
-        time.sleep(0.5)
+        time.sleep(0.1)
 
 
 if __name__ == "__main__":
