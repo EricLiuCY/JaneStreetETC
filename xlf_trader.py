@@ -7,8 +7,8 @@ import sys
 import socket
 import json
 from bond import bond_pricing
-from ETF_Arb import etf_decision
-# from bad_decision import bad_etf_decision as etf_decision
+# from ETF_Arb import etf_decision
+from bad_decision import bad_etf_decision as etf_decision
 import random
 
 
