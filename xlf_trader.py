@@ -139,7 +139,7 @@ def trade_xlf(exchange, prices):
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
                         wait_for_fill(30, read_exchange)
-                         break
+                        break
                     elif read_exchange['type'] == 'book':
                         price_updater()
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "GS", "dir": "BUY",
