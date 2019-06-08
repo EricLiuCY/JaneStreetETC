@@ -54,7 +54,7 @@ def write_to_exchange(exchange, obj):
 def read_from_exchange(exchange):
     return json.loads(exchange.readline())
 
-def trade_xlf(exchange, prices, RUN):
+def trade_xlf(exchange, prices):
     read_exchange = read_from_exchange(exchange)
     def price_updater():
         buys = read_exchange['buy']
