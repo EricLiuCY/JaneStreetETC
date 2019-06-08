@@ -106,27 +106,22 @@ def trade_xlf(exchange):
                         elif read_exchange['type'] == 'ack':
                             print("{} SELL ACKNOWLEDGED".format(k))
                             break
-                        # elif read_exchange['type'] == 'fill':
-                        #     print("BOND SELL FILLED")
-                        #     break
+
                 if v <= -50:
-                write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": k, "dir": "BUY",
-                                             "price": prices[k][0],
-                                             "size": 30})
-                position[k] += 30
+                    write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": k, "dir": "BUY",
+                                                 "price": prices[k][0],
+                                                 "size": 30})
+                    position[k] += 30
 
-                while True:
-                    read_exchange = read_from_exchange(exchange)
+                    while True:
+                        read_exchange = read_from_exchange(exchange)
 
-                    if read_exchange['type'] == 'reject':
-                        print("Rejected, returning")
-                        break
-                    elif read_exchange['type'] == 'ack':
-                        print("{} SELL ACKNOWLEDGED".format(k))
-                        break
-                    # elif read_exchange['type'] == 'fill':
-                    #     print("BOND SELL FILLED")
-                    #     break
+                        if read_exchange['type'] == 'reject':
+                            print("Rejected, returning")
+                            break
+                        elif read_exchange['type'] == 'ack':
+                            print("{} SELL ACKNOWLEDGED".format(k))
+                            break
 
 
         if position['XLF'] >= 50 or (position['GS'] <= -50 or position['MS'] <= -50 or position['WFC'] <= -50 or position['BOND'] <= -50):
