@@ -70,7 +70,7 @@ def buy_bond(exchange, start_position, ORDERS):
                 sell_return = read_from_exchange(exchange)
                 print("SELL REPLY:", sell_return, file=sys.stderr)
                 ORDERS += 1
-    # print("The exchange replied:", return_exchange, file=sys.stderr)
+    print("The exchange replied:", return_exchange, file=sys.stderr)
 
 def main():
     ORDERS = 0
