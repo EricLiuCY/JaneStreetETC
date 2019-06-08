@@ -187,6 +187,7 @@ def trade_xlf(exchange, prices):
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "BOND", "dir": "BUY",
                                              "price": prices['BOND'][1],
                                              "size": 30})
+                print("BOUGHT BOND")
                 while True:
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
