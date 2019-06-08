@@ -128,11 +128,11 @@ def trade_xlf(exchange):
                     #     break
 
 
-        if position['XLF'] >= 50 or (position['GS'] <= -50 or position['MS'] <= -50 or position['WFC'] <= -50 or position['BOND'] <= -50):
-            decision = 'BUY'
-
-        if position['XLF'] <= -50 or (position['GS'] >= 50 or position['MS'] >= 50 or position['WFC'] >= 50 or position['BOND'] >= 50):
-            decision = 'SELL'
+        # if position['XLF'] >= 50 or (position['GS'] <= -50 or position['MS'] <= -50 or position['WFC'] <= -50 or position['BOND'] <= -50):
+        #     decision = 'BUY'
+        #
+        # if position['XLF'] <= -50 or (position['GS'] >= 50 or position['MS'] >= 50 or position['WFC'] >= 50 or position['BOND'] >= 50):
+        #     decision = 'SELL'
 
         if decision == 'BUY':
             print("Decision to Buy")
