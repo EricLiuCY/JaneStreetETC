@@ -207,6 +207,9 @@ def main():
 
     bond_market_maker(exchange)
 
+    while True:
+        print(read_from_exchange(exchange))
+
     # try:
     #     while True:
     #         buy_bond(exchange, start_position, ORDERS, prices)
