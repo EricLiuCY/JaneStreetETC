@@ -217,7 +217,7 @@ def trade_xlf(exchange, prices):
                                           {"type": "add", "order_id": generate_ID(), "symbol": "GS", "dir": "SELL",
                                            "price": prices['GS'][0],
                                            "size": 20})
-                         break
+                        break
                     if read_exchange['type'] == 'ack':
                         print("Got gbuy ack")
                         wait_for_fill(30, read_exchange)
@@ -247,6 +247,13 @@ def trade_xlf(exchange, prices):
                                              "size": 20})
                 while True:
                     read_exchange = read_from_exchange(exchange)
+                    if read_exchange['type'] == 'reject':
+                        print("The exchange REJECTED:", read_exchange, file=sys.stderr)
+                        write_to_exchange(exchange,
+                                          {"type": "add", "order_id": generate_ID(), "symbol": "WFC", "dir": "SELL",
+                                           "price": prices['WFC'][0],
+                                           "size": 20})
+                        break
                     if read_exchange['type'] == 'ack':
                         print("Got wbuy ack")
                         wait_for_fill(30, read_exchange)
