@@ -109,7 +109,7 @@ def trade_xlf(exchange):
 
                 if v <= -50:
                     write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": k, "dir": "BUY",
-                                                 "price": prices[k][0],
+                                                 "price": prices[k][1],
                                                  "size": 30})
                     position[k] += 30
 
