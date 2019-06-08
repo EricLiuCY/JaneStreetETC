@@ -20,7 +20,7 @@ def generate_ID():
 team_name="loremipsum"
 # This variable dictates whether or not the bot is connecting to the prod
 # or test exchange. Be careful with this switch!
-test_mode = True
+test_mode = False
 
 # This setting changes which test exchange is connected to.
 # 0 is prod-like
@@ -78,12 +78,8 @@ def trade_xlf(exchange):
         return
 
     if len(prices) == 7:
-        decision, xlf_ema, bond_ema, gs_ema, ms_ema, wfc_ema = etf_decision(prices['XLF'], prices['BOND'], prices['GS'], prices['MS'], prices['WFC'])
-        prices['XLF'] = (prices['XLF'][0], prices['XLF'][1], xlf_ema)
-        prices['BOND'] = (prices['BOND'][0], prices['BOND'][1], bond_ema)
-        prices['GS'] = (prices['GS'][0], prices['GS'][1], gs_ema)
-        prices['MS'] = (prices['MS'][0], prices['MS'][1], ms_ema)
-        prices['WFC'] = (prices['WFC'][0], prices['WFC'][1], wfc_ema)
+        decision, ema = etf_decision(prices['XLF'], prices['BOND'], prices['GS'], prices['MS'], prices['WFC'])
+        prices['XLF'] = (prices['XLF'][0], prices['XLF'][1], ema)
 
         if decision == 'NOTHING':
             print("Decision to do Nothing")
