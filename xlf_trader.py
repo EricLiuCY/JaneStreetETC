@@ -14,8 +14,6 @@ import random
 ID_array = []
 
 
-
-
 def generate_ID():
 
     ID = random.randint(0, 100000)
@@ -122,7 +120,7 @@ def trade_xlf(exchange, prices):
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
                         print("Got xlf ack")
-                        # wait_for_fill(30, read_exchange)
+                        wait_for_fill(30, read_exchange)
                         break
                     elif read_exchange['type'] == 'book':
                         price_updater()
@@ -132,7 +130,7 @@ def trade_xlf(exchange, prices):
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
                         print("Got convert ack")
-                        # wait_for_fill(30, read_exchange)
+                        wait_for_fill(30, read_exchange)
                         break
                     elif read_exchange['type'] == 'book':
                         price_updater()
@@ -143,7 +141,7 @@ def trade_xlf(exchange, prices):
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
                         print("Got bsell ack")
-                        # wait_for_fill(30, read_exchange)
+                        wait_for_fill(30, read_exchange)
                         break
                     elif read_exchange['type'] == 'book':
                         price_updater()
@@ -154,7 +152,7 @@ def trade_xlf(exchange, prices):
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
                         print("Got gsell ack")
-                        # wait_for_fill(30, read_exchange)
+                        wait_for_fill(30, read_exchange)
                         break
                     elif read_exchange['type'] == 'book':
                         price_updater()
@@ -165,7 +163,7 @@ def trade_xlf(exchange, prices):
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
                         print("Got msell ack")
-                        # wait_for_fill(30, read_exchange)
+                        wait_for_fill(30, read_exchange)
                         break
                     elif read_exchange['type'] == 'book':
                         price_updater()
@@ -177,7 +175,7 @@ def trade_xlf(exchange, prices):
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
                         print("Got wsell ack")
-                        # wait_for_fill(30, read_exchange)
+                        wait_for_fill(30, read_exchange)
                         break
                     elif read_exchange['type'] == 'book':
                         price_updater()
@@ -197,13 +195,7 @@ def trade_xlf(exchange, prices):
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'reject':
                         print("The exchange REJECTED:", read_exchange, file=sys.stderr)
-                        if read_exchange['error'] == 'LIMIT:POSITION':
-                            write_to_exchange(exchange,
-                                              {"type": "add", "order_id": generate_ID(), "symbol": "BOND", "dir": "SELL",
-                                               "price": prices['BOND'][0],
-                                               "size": 15})
-                        if read_exchange['error'] == 'BAD_PRICE':
-                            read_exchange = read_from_exchange(exchange)
+                        raise
                     if read_exchange['type'] == 'ack':
                         print("Got bbuy ack")
                         wait_for_fill(30, read_exchange)
@@ -252,7 +244,7 @@ def trade_xlf(exchange, prices):
                         print("The exchange gave:", read_exchange, file=sys.stderr)
                     if read_exchange['type'] == 'ack':
                         print("Got xconvert ack")
-                        # wait_for_fill(30, read_exchange)
+                        wait_for_fill(30, read_exchange)
                         break
                     elif read_exchange['type'] == 'book':
                         price_updater()
