@@ -19,5 +19,3 @@ def etf_decision(etf, bond, gs, ms, wfc):
             return "SELL", etf_fair, bond_fair, gs_fair, ms_fair, wfc_fair
     else:
         return "NOTHING", etf_fair, bond_fair, gs_fair, ms_fair, wfc_fair
-
-
