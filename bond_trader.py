@@ -62,6 +62,7 @@ def buy_bond(exchange, start_position, ORDERS):
             # print(bond_sell)
 
             if decision == "SELL":
+                print("DECIDING TO SELL AT " + bond_buy)
                 write_to_exchange(exchange, {"type": "add", "order_id": ORDERS, "symbol": "BOND", "dir": "SELL", "price": bond_buy, "size": max_bond_buy})
                 buy_return = read_from_exchange(exchange)
                 counter = 0
@@ -83,6 +84,7 @@ def buy_bond(exchange, start_position, ORDERS):
                             buy_return = read_from_exchange(exchange)
                     counter += 1
             if decision == "BUY":
+                print("DECIDING TO BUY AT " + bond_sell)
                 write_to_exchange(exchange, {"type": "add", "order_id": ORDERS, "symbol": "BOND", "dir": "BUY", "price": bond_sell, "size": max_bond_sell})
                 sell_return = read_from_exchange(exchange)
                 counter = 0
