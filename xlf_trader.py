@@ -74,6 +74,7 @@ def trade_xlf(exchange, prices):
             if max_sell == i[1]:
                 avg_sell = i[0]
         prices[read_exchange['symbol']] = (avg_buy, avg_sell, None)
+        print("Price Updated")
         # print("Prices updated to: " + repr(prices))
         # print("The exchange gave:", read_exchange, file=sys.stderr)
         return
