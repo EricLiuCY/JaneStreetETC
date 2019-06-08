@@ -12,7 +12,7 @@ def etf_decision(etf, bond, gs, ms, wfc):
     etf_buy_profit= etf_fair - etf[0]
     etf_sell_profit = etf[1] - etf_fair
 
-    if etf_buy_profit > 0 | etf_sell_profit > 0:
+    if int(etf_buy_profit) > 0 or int(etf_sell_profit) > 0:
         if etf_buy_profit > etf_sell_profit:
             return "BUY", etf_fair, bond_fair, gs_fair, ms_fair, wfc_fair
         else:
