@@ -244,7 +244,7 @@ def trade_xlf(exchange, prices):
                         print("The exchange gave:", read_exchange, file=sys.stderr)
                     if read_exchange['type'] == 'ack':
                         print("Got xconvert ack")
-                        wait_for_fill(30, read_exchange)
+                        # wait_for_fill(30, read_exchange)
                         break
                     elif read_exchange['type'] == 'book':
                         price_updater()
@@ -256,7 +256,7 @@ def trade_xlf(exchange, prices):
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
                         print("Got xsell ack")
-                        wait_for_fill(30, read_exchange)
+                        # wait_for_fill(30, read_exchange)
                         break
                     elif read_exchange['type'] == 'book':
                         price_updater()
