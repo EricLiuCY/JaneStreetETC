@@ -120,7 +120,7 @@ def trade_xlf(exchange):
                             print("Rejected, returning")
                             break
                         elif read_exchange['type'] == 'ack':
-                            print("{} SELL ACKNOWLEDGED".format(k))
+                            print("{} BUY ACKNOWLEDGED".format(k))
                             break
 
 
