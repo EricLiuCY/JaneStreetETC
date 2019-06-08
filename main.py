@@ -12,6 +12,8 @@ import random
 # ~~~~~~============= Gloabl Vars & Helpers ============+~~~~~
 
 ID_array = []
+bond_buy_count = 50
+bond_sell_count = 50
 
 def generate_ID():
 
@@ -172,29 +174,14 @@ def buy_bond(exchange, start_position, ORDERS, prices):
         return_exchange, BUYNUM, ORDERID = buyer(return_exchange, BUYNUM, ORDERID, SORDERID)
         sreturn_exchange, SELLNUM, SORDERID = seller(sreturn_exchange, SELLNUM, SORDERID, ORDERID)
 
-    # write_to_exchange(exchange,
-    #                   {"type": "add", "order_id": 51245, "symbol": "BOND", "dir": "SELL", "price": 1001,
-    #                    "size": 50})
-    # SELLNUM = 50
-    # return_exchange = read_from_exchange(exchange)
-    # while True:
-    #     if SELLNUM < 50:
-    #         write_to_exchange(exchange,
-    #                           {"type": "add", "order_id": 51245, "symbol": "BOND", "dir": "SELL", "price": 1001,
-    #                            "size": (50 - SELLNUM)})
-    #         return_exchange = read_from_exchange(exchange)
-    #         continue
-    #     if return_exchange['type'] == 'ack':
-    #         if return_exchange['order_id'] == 51245:
-    #             print("BUY ORDER ACKNOWLEDGED")
-    #             return_exchange = read_from_exchange(exchange)
-    #             continue
-    #     elif return_exchange['type'] == 'fill':
-    #         if return_exchange['order_id'] == 51245:
-    #             SELLNUM -= return_exchange['size']
-    #             print("BUY ORDER FULFILLED AT PRICE: " + str(return_exchange['price']) + " OF SIZE: " + str(
-    #                 return_exchange['size']))
-    #     return_exchange = read_from_exchange(exchange)
+
+def dispatcher(exchange):
+    message = read_from_exchange(exchange)
+    type = message['type']
+
+    if type == "book":
+        print("it works hahahah")
+
 
 # ~~~~~============== MAIN LOOP ==============~~~~~
 
@@ -208,7 +195,7 @@ def main():
     bond_market_maker(exchange)
 
     while True:
-        print(read_from_exchange(exchange))
+        dispatcher(exchange)
 
     # try:
     #     while True:
