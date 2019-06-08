@@ -104,6 +104,7 @@ def trade_xlf(exchange):
                         return
                     elif read_exchange['type'] == 'ack':
                         print("XLF BUY ACKNOWLEDGED")
+                        break
                     # elif read_exchange['type'] == 'fill':
                     #     print("XLF BUY FILLED")
                     #     break
