@@ -90,6 +90,7 @@ def trade_xlf(exchange):
             return
 
         for k,v in position.items():
+            print("KEY: {}, VAL: {}".format(k,v))
             if k != 'USD':
                 if v >= 50:
                     write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": k, "dir": "SELL",
