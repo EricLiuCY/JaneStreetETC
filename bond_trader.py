@@ -129,9 +129,9 @@ def buy_bond(exchange, start_position, ORDERS, prices):
             write_to_exchange(exchange,
                               {"type": "add", "order_id": ORDERID, "symbol": "BOND", "dir": "BUY", "price": 999,
                                "size": (50 - BUYNUM)})
-            BUYNUM = 50
             ORDERID += 1
             print("BUY ORDER PLACED OF SIZE: " + str(50 - BUYNUM))
+            BUYNUM = 50
             return read_from_exchange(exchange), BUYNUM, ORDERID
         if return_exchange['type'] == 'ack':
             if return_exchange['order_id'] == ORDERID:
@@ -171,9 +171,10 @@ def buy_bond(exchange, start_position, ORDERS, prices):
             write_to_exchange(exchange,
                               {"type": "add", "order_id": ORDERID, "symbol": "BOND", "dir": "SELL", "price": 1001,
                                "size": (50 - SELLNUM)})
-            SELLNUM = 50
             ORDERID += 1
             print("SELL ORDER PLACED OF SIZE: " + str(50-SELLNUM))
+            SELLNUM = 50
+
             return read_from_exchange(exchange), SELLNUM, ORDERID
         if return_exchange['type'] == 'book':
             buys = return_exchange['buy']
