@@ -152,10 +152,9 @@ def read_from_exchange(exchange):
 
 
 def redo_position(exchange):
-    if pos_bond > 30 & pos_gs > 20 & pos_ms > 30 & pos_wfc > 20:
+    if pos_bond > 60 & pos_gs > 70 & pos_ms > 60 & pos_wfc > 70:
         write_to_exchange(exchange,
                           {"type": "convert", "order_id": generate_ID(), "symbol": "XLF", "dir": "BUY", "size": 10})
-    # elif pos_bond < -30 & pos_gs > 20 & pos_ms > 30 & pos_wfc > 20:
 
 
 # ~~~~~============== MAIN LOOP ==============~~~~~
@@ -312,6 +311,7 @@ def main():
 
     while True:
         print("begins")
+        redo_position(exchange)
         dispatcher(exchange)
 
 
