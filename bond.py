@@ -3,7 +3,6 @@
 
 def bond_pricing(cur_price, min_profit):
     fair_price = 1000
-    min_profit = 10
 
     decision = None
     est_profit = None
