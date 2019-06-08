@@ -101,7 +101,7 @@ def trade_xlf(exchange):
 
                     if read_exchange['type'] == 'reject':
                         print("Rejected, returning")
-                        return
+                        break
                     elif read_exchange['type'] == 'ack':
                         print("XLF BUY ACKNOWLEDGED")
                         break
@@ -122,7 +122,7 @@ def trade_xlf(exchange):
 
                     if read_exchange['type'] == 'reject':
                         print("Rejected, returning")
-                        return
+                        break
                     elif read_exchange['type'] == 'ack':
                         print("XLF CONVERT ACKNOWLEDGED")
                         break
@@ -156,7 +156,7 @@ def trade_xlf(exchange):
 
                     if read_exchange['type'] == 'reject':
                         print("Rejected, returning")
-                        return
+                        break
                     elif read_exchange['type'] == 'ack':
                         print("BOND SELL ACKNOWLEDGED")
                         break
@@ -175,7 +175,7 @@ def trade_xlf(exchange):
 
                     if read_exchange['type'] == 'reject':
                         print("Rejected, returning")
-                        return
+                        break
                     elif read_exchange['type'] == 'ack':
                         print("GS SELL ACKNOWLEDGED")
                     elif read_exchange['type'] == 'fill':
@@ -193,7 +193,7 @@ def trade_xlf(exchange):
 
                     if read_exchange['type'] == 'reject':
                         print("Rejected, returning")
-                        return
+                        break
                     elif read_exchange['type'] == 'ack':
                         print("MS SELL ACKNOWLEDGED")
                     elif read_exchange['type'] == 'fill':
@@ -211,7 +211,7 @@ def trade_xlf(exchange):
 
                     if read_exchange['type'] == 'reject':
                         print("Rejected, returning")
-                        return
+                        break
                     elif read_exchange['type'] == 'ack':
                         print("WFC SELL ACKNOWLEDGED")
                     elif read_exchange['type'] == 'fill':
@@ -235,7 +235,7 @@ def trade_xlf(exchange):
 
                     if read_exchange['type'] == 'reject':
                         print("Rejected, returning")
-                        return
+                        break
                     elif read_exchange['type'] == 'ack':
                         print("BOND BUY ACKNOWLEDGED")
                         break
@@ -254,7 +254,7 @@ def trade_xlf(exchange):
 
                     if read_exchange['type'] == 'reject':
                         print("Rejected, returning")
-                        return
+                        break
                     elif read_exchange['type'] == 'ack':
                         print("GS BUY ACKNOWLEDGED")
                     elif read_exchange['type'] == 'fill':
@@ -272,7 +272,7 @@ def trade_xlf(exchange):
 
                     if read_exchange['type'] == 'reject':
                         print("Rejected, returning")
-                        return
+                        break
                     elif read_exchange['type'] == 'ack':
                         print("MS BUY ACKNOWLEDGED")
                     elif read_exchange['type'] == 'fill':
@@ -290,7 +290,7 @@ def trade_xlf(exchange):
 
                     if read_exchange['type'] == 'reject':
                         print("Rejected, returning")
-                        return
+                        break
                     elif read_exchange['type'] == 'ack':
                         print("WFC BUY ACKNOWLEDGED")
                     elif read_exchange['type'] == 'fill':
