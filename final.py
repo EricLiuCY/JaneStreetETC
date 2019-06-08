@@ -20,7 +20,7 @@ def generate_ID():
 team_name="loremipsum"
 # This variable dictates whether or not the bot is connecting to the prod
 # or test exchange. Be careful with this switch!
-test_mode = False
+test_mode = True
 
 # This setting changes which test exchange is connected to.
 # 0 is prod-like
@@ -88,7 +88,7 @@ def trade_xlf(exchange):
         if decision == 'BUY':
             print("Decision to Buy")
 
-            if position['XLF'] <= -50:
+            if position['XLF'] <= -50 or position['XLF'] <= 50:
                 write_to_exchange(exchange,
                                   {"type": "add", "order_id": generate_ID(), "symbol": "XLF", "dir": "BUY",
                                    "price": prices['XLF'][1],
