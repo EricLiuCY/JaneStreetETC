@@ -94,6 +94,7 @@ def connect():
     return s.makefile('rw', 1)
 
 def write_to_exchange(exchange, obj):
+    time.sleep(0.1)
     json.dump(obj, exchange)
     exchange.write("\n")
 
