@@ -287,9 +287,7 @@ def trade_xlf(exchange, prices):
                         price_updater()
 
         else:
-            read_exchange = read_from_exchange(exchange)
-            if read_exchange['type'] == 'book':
-                price_updater()
+            break
 
 def main():
     prices = OrderedDict()
