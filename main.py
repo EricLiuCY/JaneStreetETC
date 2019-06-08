@@ -15,11 +15,17 @@ ID_array = []
 bond_buy_count = 50
 bond_sell_count = 50
 
-xlf_buy, xlf_sell, xlf_ema = None
-bond_buy, bond_sell = None
-gs_buy, gs_sell = None
-ms_buy, ms_sell = None
-wfc_buy, wfc_sell = None
+xlf_buy   = None
+xlf_sell  = None
+xlf_ema   = None
+bond_buy  = None
+bond_sell = None
+gs_buy    = None
+gs_sell   = None
+ms_buy    = None
+ms_sell   = None
+wfc_buy   = None
+wfc_sell  = None
 
 def generate_ID():
 
