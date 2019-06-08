@@ -261,56 +261,56 @@ def dispatcher(exchange):
         if pos_bond < -50:
             write_to_exchange(exchange,
                               {"type": "add", "order_id": generate_ID(), "symbol": "XLF", "dir": "BUY",
-                               "price": xlf_buy + 1, "size": 10})
+                               "price": xlf_buy + 1, "size": 1})
 
         write_to_exchange(exchange,
                           {"type": "convert", "order_id": generate_ID(), "symbol": "XLF", "dir": "SELL",
-                           "size": 10})
+                           "size": 1})
 
         if pos_bond > -50:
             write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "BOND", "dir": "SELL",
-                                         "price": bond_sell - 1,"size": 30})
+                                         "price": bond_sell - 1,"size": 3})
 
         if pos_bond > -50:
             write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "GS", "dir": "SELL",
-                                         "price": gs_sell - 1, "size": 20})
+                                         "price": gs_sell - 1, "size": 2})
 
         if pos_ms > -50:
             write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "MS", "dir": "SELL",
-                                         "price": ms_sell - 1, "size": 30})
+                                         "price": ms_sell - 1, "size": 3})
 
         if pos_wfc > -50:
             write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "WFC", "dir": "SELL",
                                          "price": wfc_sell - 1,
-                                         "size": 20})
+                                         "size": 2})
 
     if decision == 'SELL':
 
         if pos_xlf < -50:
             write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "BOND", "dir": "BUY",
                                          "price": bond_buy + 1,
-                                         "size": 30})
+                                         "size": 3})
 
         if pos_gs < -50:
             write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "GS", "dir": "BUY",
-                                         "price": gs_buy + 1, "size": 20})
+                                         "price": gs_buy + 1, "size": 2})
 
         if pos_ms < -50:
             write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "MS", "dir": "BUY",
-                                         "price": ms_buy + 1, "size": 30})
+                                         "price": ms_buy + 1, "size": 3})
 
         if pos_wfc < -50:
             write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "WFC", "dir": "BUY",
-                                         "price": gs_buy + 1, "size": 20})
+                                         "price": gs_buy + 1, "size": 2})
 
         write_to_exchange(exchange,
                           {"type": "convert", "order_id": generate_ID(), "symbol": "XLF", "dir": "BUY",
-                           "size": 10})
+                           "size": 1})
 
         write_to_exchange(exchange,
                           {"type": "add", "order_id": generate_ID(), "symbol": "XLF", "dir": "SELL",
                            "price": xlf_sell,
-                           "size": 10})
+                           "size": 1})
 
 # ~~~~~============== MAIN LOOP ==============~~~~~
 
