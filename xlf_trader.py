@@ -185,7 +185,7 @@ def trade_xlf(exchange, prices):
                 print("Current prices: " + repr(prices))
 
         else:
-            break
+            trade_xlf(exchange, prices)
 
 def main():
     prices = OrderedDict()
