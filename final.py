@@ -224,7 +224,7 @@ def trade_xlf(exchange):
         if decision == 'SELL':
             print("Decision to Sell")
 
-            if position['BOND'] <= -50:
+            if position['BOND'] <= -20:
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "BOND", "dir": "BUY",
                                              "price": prices['BOND'][0],
                                              "size": 30})
@@ -243,7 +243,7 @@ def trade_xlf(exchange):
                     #     print("BOND BUY FILLED")
                     #     break
 
-            if position['GS'] <= -50:
+            if position['GS'] <= -30:
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "GS", "dir": "BUY",
                                              "price": prices['GS'][0],
                                              "size": 20})
@@ -261,7 +261,7 @@ def trade_xlf(exchange):
                         print("GS BUY FILLED")
                         break
 
-            if position['MS'] <= -50:
+            if position['MS'] <= -20:
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "MS", "dir": "BUY",
                                              "price": prices['MS'][0],
                                              "size": 30})
@@ -279,7 +279,7 @@ def trade_xlf(exchange):
                         print("MS BUY FILLED")
                         break
 
-            if position['WFC'] <= -50:
+            if position['WFC'] <= -30:
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "WFC", "dir": "BUY",
                                              "price": prices['WFC'][0],
                                              "size": 20})
@@ -297,7 +297,7 @@ def trade_xlf(exchange):
                         print("WFC BUY FILLED")
                         break
 
-            if position['WFC'] >= -80 and position['MS'] >= -70 and position['GS'] >= -80 and position['BOND'] >= -70:
+            if position['WFC'] >= -80 and position['MS'] >= -70 and position['GS'] >= -80 and position['BOND'] >= -70 and position['XLF'] <= 50:
 
                 write_to_exchange(exchange, {"type": "convert", "order_id": generate_ID(), "symbol": "XLF",
                                              "dir": "BUY", "size": 10})
