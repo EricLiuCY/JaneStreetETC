@@ -104,9 +104,9 @@ def trade_xlf(exchange):
                         return
                     elif read_exchange['type'] == 'ack':
                         print("XLF BUY ACKNOWLEDGED")
-                    elif read_exchange['type'] == 'fill':
-                        print("XLF BUY FILLED")
-                        break
+                    # elif read_exchange['type'] == 'fill':
+                    #     print("XLF BUY FILLED")
+                    #     break
 
                 write_to_exchange(exchange, {"type": "convert", "order_id": generate_ID(), "symbol": "XLF",
                                              "dir": "SELL", "size": 10})
@@ -329,9 +329,10 @@ def trade_xlf(exchange):
                         return
                     elif read_exchange['type'] == 'ack':
                         print("XLF SELL ACKNOWLEDGED")
-                    elif read_exchange['type'] == 'fill':
-                        print("XLF SELL FILLED")
                         break
+                    # elif read_exchange['type'] == 'fill':
+                    #     print("XLF SELL FILLED")
+                    #     break
 
             print("Sell Finished")
             return
