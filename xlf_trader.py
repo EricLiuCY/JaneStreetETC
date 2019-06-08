@@ -230,7 +230,7 @@ def trade_xlf(exchange, prices):
                         price_updater()
                 write_to_exchange(exchange,
                                   {"type": "convert", "order_id": generate_ID(), "symbol": "XLF", "dir": "BUY",
-                                   "size": 1})
+                                   "size": 10})
                 while True:
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] != 'book':
