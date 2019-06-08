@@ -253,7 +253,7 @@ def dispatcher(exchange):
             xlf_buy = sum_list(buy)
             xlf_sell = sum_list(sell)
 
-    decision, ema = etf_decision(xlf_buy, xlf_sell, bond_buy, bond_sell, gs_buy, gs_sell, ms_buy, ms_sell, wfc_buy, wfc_sell)
+    decision, xlf_ema = etf_decision(xlf_buy, xlf_sell, bond_buy, bond_sell, gs_buy, gs_sell, ms_buy, ms_sell, wfc_buy, wfc_sell, xlf_ema)
 
     print("something")
 
@@ -321,28 +321,8 @@ def dispatcher(exchange):
 def main():
     exchange = connect()
     write_to_exchange(exchange, {"type": "hello", "team": team_name.upper()})
-
-    global xlf_buy, xlf_ema, xlf_sell
-    global bond_buy, bond_sell
-    global gs_buy, gs_sell
-    global ms_buy, ms_sell
-    global wfc_buy, wfc_sell
-
-    # while xlf_buy is None or xlf_ema is None or bond_buy is None or bond_sell is None or gs_buy is None or gs_sell is None or ms_buy is None\
-    #         or ms_sell is None or wfc_buy is None or wfc_sell is None:
-    #     print("waiting to begin")
-    #     dispatcher_init(exchange)
-
-    # while xlf_buy ==0 or xlf_ema ==0 or bond_buy ==0 or bond_sell ==0 or gs_buy ==0 or gs_sell !=0 or ms_buy ==0\
-    #         or ms_sell ==0 or wfc_buy ==0 or wfc_sell ==0:
-    #     print("waiting to begin")
-    #     redo_position(exchange)
-    #     dispatcher_init(exchange)
-    #     time.sleep(0.1)
-
     while True:
         print("begins")
-        # redo_position(exchange)
         dispatcher(exchange)
         time.sleep(0.1)
 
