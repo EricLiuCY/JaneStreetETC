@@ -185,8 +185,9 @@ def trade_xlf(exchange, prices):
                 print("Current prices: " + repr(prices))
 
         else:
-            print("fuck")
-            trade_xlf(exchange, prices)
+            read_exchange = read_from_exchange(exchange)
+            if read_exchange['type'] == 'book':
+                price_updater()
 
 def main():
     prices = OrderedDict()
