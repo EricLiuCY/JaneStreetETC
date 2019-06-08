@@ -74,7 +74,7 @@ def trade_xlf(exchange, prices):
             if max_sell == i[1]:
                 avg_sell = i[0]
         prices[read_exchange['symbol']] = (avg_buy, avg_sell, None)
-        print("Price Updated")
+        # print("Price Updated")
         # print("Prices updated to: " + repr(prices))
         # print("The exchange gave:", read_exchange, file=sys.stderr)
         return
@@ -189,7 +189,9 @@ def trade_xlf(exchange, prices):
                                              "price": prices['BOND'][1],
                                              "size": 30})
                 print("BOUGHT BOND")
+                # counter = 0
                 while True:
+
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
                         print("Got bbuy ack")
