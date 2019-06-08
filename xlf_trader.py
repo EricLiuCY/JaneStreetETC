@@ -190,7 +190,7 @@ def trade_xlf(exchange, prices):
                 while True:
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
-                        print("Got msell ack")
+                        print("Got bbuy ack")
                         # wait_for_fill(30, read_exchange)
                         break
                     elif read_exchange['type'] == 'book':
@@ -201,7 +201,7 @@ def trade_xlf(exchange, prices):
                 while True:
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
-                        print("Got msell ack")
+                        print("Got gbuy ack")
                         # wait_for_fill(30, read_exchange)
                         break
                     elif read_exchange['type'] == 'book':
@@ -212,7 +212,7 @@ def trade_xlf(exchange, prices):
                 while True:
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
-                        print("Got msell ack")
+                        print("Got mbuy ack")
                         # wait_for_fill(30, read_exchange)
                         break
                     elif read_exchange['type'] == 'book':
@@ -223,7 +223,7 @@ def trade_xlf(exchange, prices):
                 while True:
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
-                        print("Got msell ack")
+                        print("Got wbuy ack")
                         # wait_for_fill(30, read_exchange)
                         break
                     elif read_exchange['type'] == 'book':
@@ -234,7 +234,7 @@ def trade_xlf(exchange, prices):
                 while True:
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
-                        print("Got msell ack")
+                        print("Got xconvert ack")
                         # wait_for_fill(30, read_exchange)
                         break
                     elif read_exchange['type'] == 'book':
@@ -246,7 +246,7 @@ def trade_xlf(exchange, prices):
                 while True:
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
-                        print("Got msell ack")
+                        print("Got xsell ack")
                         # wait_for_fill(30, read_exchange)
                         break
                     elif read_exchange['type'] == 'book':
