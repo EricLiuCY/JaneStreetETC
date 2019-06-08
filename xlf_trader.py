@@ -96,6 +96,7 @@ def trade_xlf(exchange, prices):
             read_exchange = read_from_exchange(exchange)
 
     while True:
+        read_exchange = read_from_exchange(exchange)
         if read_exchange['type'] == 'book':
             price_updater()
             continue
