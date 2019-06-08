@@ -89,6 +89,10 @@ def trade_xlf(exchange):
             print("Decision to do Nothing")
             return
 
+
+        if position['XLF'] >= 50:
+            decision = 'BUY'
+
         if decision == 'BUY':
             print("Decision to Buy")
 
