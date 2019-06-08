@@ -2,6 +2,7 @@
 
 
 def bond_pricing(buy_price, sell_price, min_profit):
+    print("Decision got buy at " + str(buy_price) + " and sell at " + str(sell_price))
     fair_price = 1000
 
     buy_profit = 0
