@@ -255,6 +255,7 @@ def dispatcher(exchange):
 
     decision, ema = etf_decision(xlf_buy, xlf_sell, bond_buy, bond_sell, gs_buy, gs_sell, ms_buy, ms_sell, wfc_buy, wfc_sell)
 
+    print("something")
 
     if decision == 'BUY':
 
