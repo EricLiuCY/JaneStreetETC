@@ -1,4 +1,4 @@
-def get_EMA(buy_list, sell_list, ex_EMA = None, days = 5):
+def get_EMA(buy_list, sell_list, ex_EMA = None, days = 1):
 
     # buy_price = sum(buy_list) / len(buy_list)
     # sell_price = sum(sell_list) / len(sell_list)
