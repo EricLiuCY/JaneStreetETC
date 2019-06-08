@@ -341,7 +341,7 @@ def main():
 
     while True:
         print("begins")
-        redo_position(exchange)
+        # redo_position(exchange)
         dispatcher(exchange)
         time.sleep(0.1)
 
