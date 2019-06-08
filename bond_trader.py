@@ -45,19 +45,20 @@ def buy_bond(exchange, start_position):
 def main():
     ORDERS = OrderedDict()
     exchange = connect()
-    if os.path.isfile('./BOND_HISTORY'):
-        f = open('BOND_HISTORY', 'r')
-        ORDERS = pickle.load(f)
-        f.close()
+    # if os.path.isfile('./BOND_HISTORY'):
+    #     f = open('BOND_HISTORY', 'r')
+    #     ORDERS = pickle.load(f)
+    #     f.close()
     write_to_exchange(exchange, {"type": "hello", "team": team_name.upper()})
     start_position = read_from_exchange(exchange)
     try:
         while True:
             buy_bond(exchange, start_position)
     except KeyboardInterrupt:
-        f = open('BOND_HISTORY', 'w')
-        pickle.dump(repr(ORDERS), f)
-        f.close()
+        # f = open('BOND_HISTORY', 'w')
+        # pickle.dump(repr(ORDERS), f)
+        # f.close()
+        pass
 
 if __name__ == "__main__":
     main()
