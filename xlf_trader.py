@@ -91,8 +91,8 @@ def trade_xlf(exchange, prices):
                 print("Fill reached")
                 # print("The exchange gave:", currread, file=sys.stderr)
                 return
-            if currread['type'] == 'book':
-                price_updater()
+            # if currread['type'] == 'book':
+            #     price_updater()
             counter += 1
             currread = read_from_exchange(exchange)
 
