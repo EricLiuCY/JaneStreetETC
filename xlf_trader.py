@@ -166,8 +166,8 @@ def trade_xlf(exchange, prices):
                         break
                     elif read_exchange['type'] == 'book':
                         price_updater()
-                write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "WTC", "dir": "SELL",
-                                             "price": prices['WTC'][0],
+                write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "WFC", "dir": "SELL",
+                                             "price": prices['WFC'][0],
                                              "size": 2})
                 while True:
                     read_exchange = read_from_exchange(exchange)
