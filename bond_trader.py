@@ -56,13 +56,14 @@ def buy_bond(exchange, start_position, ORDERS):
                 max_bond_sell = max(return_exchange['sell'][i][1], max_bond_sell)
                 if max_bond_sell == return_exchange['sell'][i][1]:
                     bond_sell = return_exchange['sell'][i][0]
-            (decision, profitps) = bond_pricing(bond_buy, bond_sell, 3)
+            (decision, profitps) = bond_pricing(bond_sell, bond_buy, 1)
             # print(decision)
             # print(bond_buy)
             # print(bond_sell)
 
             if decision == "SELL":
                 print("DECIDING TO SELL AT " + str(bond_buy))
+                print("BOOK REPLY WAS", return_exchange, file=sys.stderr)
                 write_to_exchange(exchange, {"type": "add", "order_id": ORDERS, "symbol": "BOND", "dir": "SELL", "price": bond_buy, "size": max_bond_buy})
                 buy_return = read_from_exchange(exchange)
                 counter = 0
@@ -72,11 +73,11 @@ def buy_bond(exchange, start_position, ORDERS):
                         print("TIMED OUT")
                         return
                     if buy_return['type'] != 'FILL':
-                        print("BUY REPLY:", buy_return, file=sys.stderr)
+                        print("SELL REPLY:", buy_return, file=sys.stderr)
                         buy_return = read_from_exchange(exchange)
                     else:
                         if buy_return['order_id'] == ORDERS:
-                            print("FILL BUY REPLY:", buy_return, file=sys.stderr)
+                            print("FILL SELL REPLY:", buy_return, file=sys.stderr)
                             ORDERS += 1
                             return
                         else:
@@ -85,6 +86,7 @@ def buy_bond(exchange, start_position, ORDERS):
                     counter += 1
             if decision == "BUY":
                 print("DECIDING TO BUY AT " + str(bond_sell))
+                print("BOOK REPLY WAS", return_exchange, file=sys.stderr)
                 write_to_exchange(exchange, {"type": "add", "order_id": ORDERS, "symbol": "BOND", "dir": "BUY", "price": bond_sell, "size": max_bond_sell})
                 sell_return = read_from_exchange(exchange)
                 counter = 0
