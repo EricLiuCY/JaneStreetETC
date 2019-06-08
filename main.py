@@ -63,7 +63,7 @@ def main():
     write_to_exchange(exchange, {"type": "hello", "team": team_name.upper()})
     start_position = read_from_exchange(exchange)
 
-    bond_market_maker()
+    bond_market_maker(exchange)
 
     # try:
     #     while True:
