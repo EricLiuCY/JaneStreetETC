@@ -91,8 +91,8 @@ def trade_xlf(exchange, prices):
                 print("Fill reached")
                 # print("The exchange gave:", currread, file=sys.stderr)
                 return
-            # if currread['type'] == 'book':
-            #     price_updater()
+            if currread['type'] == 'book':
+                price_updater()
             counter += 1
             currread = read_from_exchange(exchange)
 
@@ -169,6 +169,7 @@ def trade_xlf(exchange, prices):
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "WFC", "dir": "SELL",
                                              "price": prices['WFC'][0],
                                              "size": 2})
+                print("Selling WFC at " + str(prices['WFC'][0]))
                 while True:
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
