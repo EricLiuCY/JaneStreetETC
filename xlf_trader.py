@@ -179,6 +179,11 @@ def trade_xlf(exchange, prices):
                 #     elif read_exchange['type'] == 'book':
                 #         price_updater()
 
+            if decision == 'SELL':
+                print("Decision to Sell")
+                print("The exchange gave:", read_exchange, file=sys.stderr)
+                print("Current prices: " + repr(prices))
+
         else:
             break
 
