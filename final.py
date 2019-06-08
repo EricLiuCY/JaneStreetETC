@@ -74,10 +74,7 @@ def trade_xlf(exchange):
             max_sell = max(max_sell, i[1])
             if max_sell == i[1]:
                 avg_sell = i[0]
-        if len(prices) == 7:
-            prices[read_exchange['symbol']] = (avg_buy, avg_sell, prices[read_exchange['symbol']][2])
-        else:
-            prices[read_exchange['symbol']] = (avg_buy, avg_sell, None)
+        prices[read_exchange['symbol']] = (avg_buy, avg_sell, None)
         return
 
     if len(prices) == 7:
@@ -143,7 +140,7 @@ def trade_xlf(exchange):
 
                     if read_exchange['type'] == 'reject':
                         print("Rejected, returning")
-                        break
+                        return
                     elif read_exchange['type'] == 'ack':
                         print("XLF CONVERT ACKNOWLEDGED")
                         break
@@ -199,10 +196,9 @@ def trade_xlf(exchange):
                         break
                     elif read_exchange['type'] == 'ack':
                         print("MS SELL ACKNOWLEDGED")
+                    elif read_exchange['type'] == 'fill':
+                        print("MS SELL FILLED")
                         break
-                    # elif read_exchange['type'] == 'fill':
-                    #     print("MS SELL FILLED")
-                    #     break
 
             if position['WFC'] >= -50 and position['WFC'] <= 80:
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "WFC", "dir": "SELL",
@@ -218,10 +214,9 @@ def trade_xlf(exchange):
                         break
                     elif read_exchange['type'] == 'ack':
                         print("WFC SELL ACKNOWLEDGED")
+                    elif read_exchange['type'] == 'fill':
+                        print("WFC SELL FILLED")
                         break
-                    # elif read_exchange['type'] == 'fill':
-                    #     print("WFC SELL FILLED")
-                    #     break
 
             print("Buy Finished")
             return
@@ -280,10 +275,9 @@ def trade_xlf(exchange):
                         break
                     elif read_exchange['type'] == 'ack':
                         print("MS BUY ACKNOWLEDGED")
+                    elif read_exchange['type'] == 'fill':
+                        print("MS BUY FILLED")
                         break
-                    # elif read_exchange['type'] == 'fill':
-                    #     print("MS BUY FILLED")
-                    #     break
 
             if position['WFC'] <= -30:
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "WFC", "dir": "BUY",
@@ -299,12 +293,11 @@ def trade_xlf(exchange):
                         break
                     elif read_exchange['type'] == 'ack':
                         print("WFC BUY ACKNOWLEDGED")
+                    elif read_exchange['type'] == 'fill':
+                        print("WFC BUY FILLED")
                         break
-                    # elif read_exchange['type'] == 'fill':
-                    #     print("WFC BUY FILLED")
-                    #     break
 
-            if position['WFC'] >= -80 and position['MS'] >= -70 and position['GS'] >= -80 and position['BOND'] >= -70 and position['XLF'] <= 70:
+            if position['WFC'] >= -80 and position['MS'] >= -70 and position['GS'] >= -80 and position['BOND'] >= -70 and position['XLF'] <= 50:
 
                 write_to_exchange(exchange, {"type": "convert", "order_id": generate_ID(), "symbol": "XLF",
                                              "dir": "BUY", "size": 10})
@@ -319,7 +312,7 @@ def trade_xlf(exchange):
 
                     if read_exchange['type'] == 'reject':
                         print("Rejected, returning")
-                        break
+                        return
                     elif read_exchange['type'] == 'ack':
                         print("XLF DE-CONVERT ACKNOWLEDGED")
                         break
@@ -336,7 +329,7 @@ def trade_xlf(exchange):
 
                     if read_exchange['type'] == 'reject':
                         print("Rejected, returning")
-                        break
+                        return
                     elif read_exchange['type'] == 'ack':
                         print("XLF SELL ACKNOWLEDGED")
                         break
