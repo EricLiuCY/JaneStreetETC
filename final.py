@@ -74,7 +74,10 @@ def trade_xlf(exchange):
             max_sell = max(max_sell, i[1])
             if max_sell == i[1]:
                 avg_sell = i[0]
-        prices[read_exchange['symbol']] = (avg_buy, avg_sell, prices[read_exchange['symbol']][2] if  prices[read_exchange['symbol']][2] else None)
+        if len(prices) == 7:
+            prices[read_exchange['symbol']] = (avg_buy, avg_sell, prices[read_exchange['symbol']][2])
+        else:
+            prices[read_exchange['symbol']] = (avg_buy, avg_sell, None)
         return
 
     if len(prices) == 7:
