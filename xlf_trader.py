@@ -264,8 +264,6 @@ def trade_xlf(exchange, prices):
                                    "size": 10})
                 while True:
                     read_exchange = read_from_exchange(exchange)
-                    if read_exchange['type'] != 'book':
-                        print("The exchange gave:", read_exchange, file=sys.stderr)
                     if read_exchange['type'] == 'ack':
                         print("Got xconvert ack")
                         # wait_for_fill(30, read_exchange)
@@ -278,6 +276,8 @@ def trade_xlf(exchange, prices):
                                    "size": 10})
                 while True:
                     read_exchange = read_from_exchange(exchange)
+                    if read_exchange['type'] == 'reject':
+                        print("The exchange REJECTED:", read_exchange, file=sys.stderr)
                     if read_exchange['type'] == 'ack':
                         print("Got xsell ack")
                         # wait_for_fill(30, read_exchange)
