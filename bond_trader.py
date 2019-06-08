@@ -39,7 +39,7 @@ def write_to_exchange(exchange, obj):
 def read_from_exchange(exchange):
     return json.loads(exchange.readline())
 
-def buy_bond(exchange, start_position, ORDERS):
+def buy_bond(exchange, start_position, ORDERS, prices):
     MAX = 30
     return_exchange = read_from_exchange(exchange)
     # if return_exchange['type'] == 'book':
@@ -137,6 +137,24 @@ def buy_bond(exchange, start_position, ORDERS):
             if return_exchange['order_id'] == ORDERID:
                 print("BUY ORDER ACKNOWLEDGED")
                 return read_from_exchange(exchange), BUYNUM, ORDERID
+        if return_exchange['type'] == 'book':
+            buys = return_exchange['buy']
+            sells = return_exchange['sell']
+
+            avg_buy = -1
+            avg_sell = -1
+
+            max_buy = 0
+            max_sell = 0
+            for i in buys:
+                max_buy = max(max_buy, i[1])
+                if max_buy == i[1]:
+                    avg_buy = i[0]
+            for i in sells:
+                max_sell = max(max_sell, i[1])
+                if max_sell == i[1]:
+                    avg_sell = i[0]
+            prices[return_exchange['symbol']] = (avg_buy, avg_sell, None)
         elif return_exchange['type'] == 'fill':
             if return_exchange['order_id'] == ORDERID:
                 BUYNUM -= return_exchange['size']
@@ -158,6 +176,24 @@ def buy_bond(exchange, start_position, ORDERS):
             ORDERID += 1
             print("SELL ORDER PLACED OF SIZE: " + str(50-SELLNUM))
             return read_from_exchange(exchange), SELLNUM, ORDERID
+        if return_exchange['type'] == 'book':
+            buys = return_exchange['buy']
+            sells = return_exchange['sell']
+
+            avg_buy = -1
+            avg_sell = -1
+
+            max_buy = 0
+            max_sell = 0
+            for i in buys:
+                max_buy = max(max_buy, i[1])
+                if max_buy == i[1]:
+                    avg_buy = i[0]
+            for i in sells:
+                max_sell = max(max_sell, i[1])
+                if max_sell == i[1]:
+                    avg_sell = i[0]
+            prices[return_exchange['symbol']] = (avg_buy, avg_sell, None)
         if return_exchange['type'] == 'ack':
             if return_exchange['order_id'] == ORDERID:
                 print("SELL ORDER ACKNOWLEDGED")
@@ -202,6 +238,7 @@ def buy_bond(exchange, start_position, ORDERS):
     #     return_exchange = read_from_exchange(exchange)
 
 def main():
+    prices = OrderedDict()
     ORDERS = 0
     exchange = connect()
     # if os.path.isfile('./BOND_HISTORY'):
@@ -212,7 +249,7 @@ def main():
     start_position = read_from_exchange(exchange)
     try:
         while True:
-            buy_bond(exchange, start_position, ORDERS)
+            buy_bond(exchange, start_position, ORDERS, prices)
     except KeyboardInterrupt:
         # f = open('BOND_HISTORY', 'w')
         # pickle.dump(repr(ORDERS), f)
