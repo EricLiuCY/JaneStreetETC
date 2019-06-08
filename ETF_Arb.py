@@ -1,16 +1,16 @@
 import get_EMA as EMA
 
 
-def etf_decision(etf, bond, gs, ms, wfc):
+def etf_decision(etf, etf2, bond, bond2, gs, gs2, ms, ms2, wfc, wfc2):
 
-    bond_fair = EMA.get_EMA(bond[0], bond[1])
-    gs_fair = EMA.get_EMA(gs[0], gs[0])
-    ms_fair = EMA.get_EMA(ms[0], ms[0])
-    wfc_fair = EMA.get_EMA(wfc[0], wfc[0])
+    bond_fair = EMA.get_EMA(bond, bond2)
+    gs_fair = EMA.get_EMA(gs, gs2)
+    ms_fair = EMA.get_EMA(ms, ms2)
+    wfc_fair = EMA.get_EMA(wfc, wfc2)
 
     etf_fair = 3*bond_fair + 2*gs_fair + 3*ms_fair + 2*wfc_fair + 100 + 10
-    etf_to_buy = etf[0]  # TODO double check
-    etf_to_sell = etf[1]
+    etf_to_buy = etf  # TODO double check
+    etf_to_sell = etf2
 
     if etf_to_buy > etf_fair:
         return "BUY", EMA
