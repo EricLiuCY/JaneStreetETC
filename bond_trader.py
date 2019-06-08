@@ -68,7 +68,10 @@ def buy_bond(exchange, start_position, ORDERS):
             if decision == "BUY":
                 write_to_exchange(exchange, {"type": "add", "order_id": ORDERS, "symbol": "BOND", "dir": "BUY", "price": bond_sell, "size": max_bond_sell})
                 sell_return = read_from_exchange(exchange)
-                print("SELL REPLY:", sell_return, file=sys.stderr)
+                while sell_return['type'] != 'FILL':
+                    print("SELL REPLY:", sell_return, file=sys.stderr)
+                    sell_return = read_from_exchange(exchange)
+                print("FILL SELL REPLY: ", sell_return, file=sys.stderr)
                 ORDERS += 1
     print("The exchange replied:", return_exchange, file=sys.stderr)
 
