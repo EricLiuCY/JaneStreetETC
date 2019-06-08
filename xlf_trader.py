@@ -54,9 +54,8 @@ def write_to_exchange(exchange, obj):
 def read_from_exchange(exchange):
     return json.loads(exchange.readline())
 
-def trade_xlf(exchange, prices):
+def trade_xlf(exchange, prices, RUN):
     read_exchange = read_from_exchange(exchange)
-    # print("The exchange gave:", read_exch/ange, file=sys.stderr)
     def price_updater():
         buys = read_exchange['buy']
         sells = read_exchange['sell']
@@ -276,7 +275,7 @@ def trade_xlf(exchange, prices):
                 write_to_exchange(exchange,
                                   {"type": "add", "order_id": generate_ID(), "symbol": "XLF", "dir": "SELL",
                                    "price": prices['XLF'][0],
-                                   "size": 1})
+                                   "size": 10})
                 while True:
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
