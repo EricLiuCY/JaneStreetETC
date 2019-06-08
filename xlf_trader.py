@@ -78,22 +78,23 @@ def trade_xlf(exchange, prices):
         print("The exchange gave:", read_exchange, file=sys.stderr)
         return
 
-    def wait_for_fill(MAX):
+    def wait_for_fill(MAX, currread):
         print("Waiting for fill")
+
         counter = 0
         while True:
             if counter > MAX:
                 print("Fill never reached")
-                print("The exchange gave:", read_exchange, file=sys.stderr)
+                print("The exchange gave:", currread, file=sys.stderr)
                 return
-            if read_exchange['type'] == 'fill':
+            if currread['type'] == 'fill':
                 print("Fill reached")
-                print("The exchange gave:", read_exchange, file=sys.stderr)
+                print("The exchange gave:", currread, file=sys.stderr)
                 return
-            if read_exchange['type'] == 'book':
+            if currread['type'] == 'book':
                 price_updater()
             counter += 1
-            read_exchange = read_from_exchange(exchange)
+            currread = read_from_exchange(exchange)
 
     while True:
         read_exchange = read_from_exchange(exchange)
@@ -118,7 +119,8 @@ def trade_xlf(exchange, prices):
                 while True:
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
-                        wait_for_fill(30)
+                        wait_for_fill(30, read_exchange)
+                        break
                     elif read_exchange['type'] == 'book':
                         price_updater()
 
@@ -126,7 +128,8 @@ def trade_xlf(exchange, prices):
                 while True:
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
-                        wait_for_fill(30)
+                        wait_for_fill(30, read_exchange)
+                        break
                     elif read_exchange['type'] == 'book':
                         price_updater()
 
@@ -135,7 +138,8 @@ def trade_xlf(exchange, prices):
                 while True:
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
-                        wait_for_fill(30)
+                        wait_for_fill(30, read_exchange)
+                         break
                     elif read_exchange['type'] == 'book':
                         price_updater()
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "GS", "dir": "BUY",
@@ -144,7 +148,8 @@ def trade_xlf(exchange, prices):
                 while True:
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
-                        wait_for_fill(30)
+                        wait_for_fill(30, read_exchange)
+                        break
                     elif read_exchange['type'] == 'book':
                         price_updater()
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "MS", "dir": "BUY",
@@ -153,7 +158,8 @@ def trade_xlf(exchange, prices):
                 while True:
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
-                        wait_for_fill(30)
+                        wait_for_fill(30, read_exchange)
+                        break
                     elif read_exchange['type'] == 'book':
                         price_updater()
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "WTC", "dir": "BUY",
@@ -162,7 +168,8 @@ def trade_xlf(exchange, prices):
                 while True:
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'ack':
-                        wait_for_fill(30)
+                        wait_for_fill(30, read_exchange)
+                        break
                     elif read_exchange['type'] == 'book':
                         price_updater()
 
