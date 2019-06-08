@@ -317,6 +317,7 @@ def trade_xlf(exchange):
 
             print("Sell Finished")
             return
+
     else:
         return
 
