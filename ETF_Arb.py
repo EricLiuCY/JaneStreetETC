@@ -8,7 +8,7 @@ def etf_decision(etf, etf2, bond, bond2, gs, gs2, ms, ms2, wfc, wfc2):
     ms_fair = EMA.get_EMA(ms, ms2)
     wfc_fair = EMA.get_EMA(wfc, wfc2)
 
-    etf_fair = 3*bond_fair + 2*gs_fair + 3*ms_fair + 2*wfc_fair + 100 + 10
+    etf_fair = 3*bond_fair + 2*gs_fair + 3*ms_fair + 2*wfc_fair + 100 + 100
     etf_to_buy = etf  # TODO double check
     etf_to_sell = etf2
 
