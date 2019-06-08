@@ -56,7 +56,7 @@ def main():
             buy_bond(exchange, start_position)
     except KeyboardInterrupt:
         f = open('BOND_HISTORY', 'w')
-        pickle.dump(ORDERS, f)
+        pickle.dump(repr(ORDERS), f)
         f.close()
 
 if __name__ == "__main__":
