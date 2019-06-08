@@ -258,6 +258,8 @@ def dispatcher(exchange):
 
     if decision == 'BUY':
 
+        "BUY"
+
         if pos_bond < -50:
             write_to_exchange(exchange,
                               {"type": "add", "order_id": generate_ID(), "symbol": "XLF", "dir": "BUY",
@@ -286,6 +288,7 @@ def dispatcher(exchange):
 
     if decision == 'SELL':
 
+        "SELL"
         if pos_xlf < -50:
             write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "BOND", "dir": "BUY",
                                          "price": bond_buy + 1,
