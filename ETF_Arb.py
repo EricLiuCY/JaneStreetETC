@@ -2,11 +2,7 @@ import get_EMA as EMA
 
 
 def etf_decision(etf, bond, gs, ms, wfc):
-    print(etf)
-    print(bond)
-    print(gs)
-    print(ms)
-    print(wfc)
+
     bond_fair = EMA.get_EMA(bond[0], bond[1])
     gs_fair = EMA.get_EMA(gs[0], gs[0])
     ms_fair = EMA.get_EMA(ms[0], ms[0])
