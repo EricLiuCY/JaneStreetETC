@@ -15,7 +15,7 @@ ID_array = []
 
 def generate_ID():
 
-    ID = random.randint()
+    ID = random.randint(1, 1000)
     if ID not in ID_array:
         return ID
     else:
