@@ -115,69 +115,69 @@ def trade_xlf(exchange, prices):
                 write_to_exchange(exchange,
                                   {"type": "add", "order_id": generate_ID(), "symbol": "XLF", "dir": "BUY", "price": prices['XLF'][1],
                                    "size": 10})
-                # while True:
-                #     read_exchange = read_from_exchange(exchange)
-                #     if read_exchange['type'] == 'ack':
-                #         print("Got xlf ack")
-                #         wait_for_fill(30, read_exchange)
-                #         break
-                #     elif read_exchange['type'] == 'book':
-                #         price_updater()
+                while True:
+                    read_exchange = read_from_exchange(exchange)
+                    if read_exchange['type'] == 'ack':
+                        print("Got xlf ack")
+                        # wait_for_fill(30, read_exchange)
+                        break
+                    elif read_exchange['type'] == 'book':
+                        price_updater()
 
                 write_to_exchange(exchange, {"type": "convert", "order_id": generate_ID(), "symbol": "XLF", "dir": "SELL", "size": 10})
-                # while True:
-                #     read_exchange = read_from_exchange(exchange)
-                #     if read_exchange['type'] == 'ack':
-                #         print("Got convert ack")
-                #         wait_for_fill(30, read_exchange)
-                #         break
-                #     elif read_exchange['type'] == 'book':
-                #         price_updater()
+                while True:
+                    read_exchange = read_from_exchange(exchange)
+                    if read_exchange['type'] == 'ack':
+                        print("Got convert ack")
+                        # wait_for_fill(30, read_exchange)
+                        break
+                    elif read_exchange['type'] == 'book':
+                        price_updater()
 
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "BOND", "dir": "SELL", "price": prices['BOND'][0],
                                    "size": 3})
-                # while True:
-                #     read_exchange = read_from_exchange(exchange)
-                #     if read_exchange['type'] == 'ack':
-                #         print("Got bsell ack")
-                #         wait_for_fill(30, read_exchange)
-                #         break
-                #     elif read_exchange['type'] == 'book':
-                #         price_updater()
+                while True:
+                    read_exchange = read_from_exchange(exchange)
+                    if read_exchange['type'] == 'ack':
+                        print("Got bsell ack")
+                        # wait_for_fill(30, read_exchange)
+                        break
+                    elif read_exchange['type'] == 'book':
+                        price_updater()
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "GS", "dir": "SELL",
                                              "price": prices['GS'][0],
                                              "size": 2})
-                # while True:
-                #     read_exchange = read_from_exchange(exchange)
-                #     if read_exchange['type'] == 'ack':
-                #         print("Got gsell ack")
-                #         wait_for_fill(30, read_exchange)
-                #         break
-                #     elif read_exchange['type'] == 'book':
-                #         price_updater()
+                while True:
+                    read_exchange = read_from_exchange(exchange)
+                    if read_exchange['type'] == 'ack':
+                        print("Got gsell ack")
+                        # wait_for_fill(30, read_exchange)
+                        break
+                    elif read_exchange['type'] == 'book':
+                        price_updater()
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "MS", "dir": "SELL",
                                              "price": prices['MS'][0],
                                              "size": 3})
-                # while True:
-                #     read_exchange = read_from_exchange(exchange)
-                #     if read_exchange['type'] == 'ack':
-                #         print("Got msell ack")
-                #         wait_for_fill(30, read_exchange)
-                #         break
-                #     elif read_exchange['type'] == 'book':
-                #         price_updater()
+                while True:
+                    read_exchange = read_from_exchange(exchange)
+                    if read_exchange['type'] == 'ack':
+                        print("Got msell ack")
+                        # wait_for_fill(30, read_exchange)
+                        break
+                    elif read_exchange['type'] == 'book':
+                        price_updater()
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "WFC", "dir": "SELL",
                                              "price": prices['WFC'][0],
                                              "size": 2})
-                # print("Selling WFC at " + str(prices['WFC'][0]))
-                # while True:
-                #     read_exchange = read_from_exchange(exchange)
-                #     if read_exchange['type'] == 'ack':
-                #         print("Got wsell ack")
-                #         wait_for_fill(30, read_exchange)
-                #         break
-                #     elif read_exchange['type'] == 'book':
-                #         price_updater()
+                print("Selling WFC at " + str(prices['WFC'][0]))
+                while True:
+                    read_exchange = read_from_exchange(exchange)
+                    if read_exchange['type'] == 'ack':
+                        print("Got wsell ack")
+                        # wait_for_fill(30, read_exchange)
+                        break
+                    elif read_exchange['type'] == 'book':
+                        price_updater()
 
             if decision == 'SELL':
                 print("Decision to Sell")
@@ -187,22 +187,70 @@ def trade_xlf(exchange, prices):
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "BOND", "dir": "BUY",
                                              "price": prices['BOND'][1],
                                              "size": 3})
+                while True:
+                    read_exchange = read_from_exchange(exchange)
+                    if read_exchange['type'] == 'ack':
+                        print("Got msell ack")
+                        # wait_for_fill(30, read_exchange)
+                        break
+                    elif read_exchange['type'] == 'book':
+                        price_updater()
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "GS", "dir": "BUY",
                                              "price": prices['GS'][1],
                                              "size": 2})
+                while True:
+                    read_exchange = read_from_exchange(exchange)
+                    if read_exchange['type'] == 'ack':
+                        print("Got msell ack")
+                        # wait_for_fill(30, read_exchange)
+                        break
+                    elif read_exchange['type'] == 'book':
+                        price_updater()
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "MS", "dir": "BUY",
                                              "price": prices['MS'][1],
                                              "size": 3})
+                while True:
+                    read_exchange = read_from_exchange(exchange)
+                    if read_exchange['type'] == 'ack':
+                        print("Got msell ack")
+                        # wait_for_fill(30, read_exchange)
+                        break
+                    elif read_exchange['type'] == 'book':
+                        price_updater()
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "WFC", "dir": "BUY",
                                              "price": prices['WFC'][1],
                                              "size": 2})
+                while True:
+                    read_exchange = read_from_exchange(exchange)
+                    if read_exchange['type'] == 'ack':
+                        print("Got msell ack")
+                        # wait_for_fill(30, read_exchange)
+                        break
+                    elif read_exchange['type'] == 'book':
+                        price_updater()
                 write_to_exchange(exchange,
                                   {"type": "convert", "order_id": generate_ID(), "symbol": "XLF", "dir": "BUY",
                                    "size": 10})
+                while True:
+                    read_exchange = read_from_exchange(exchange)
+                    if read_exchange['type'] == 'ack':
+                        print("Got msell ack")
+                        # wait_for_fill(30, read_exchange)
+                        break
+                    elif read_exchange['type'] == 'book':
+                        price_updater()
                 write_to_exchange(exchange,
                                   {"type": "add", "order_id": generate_ID(), "symbol": "XLF", "dir": "SELL",
                                    "price": prices['XLF'][0],
                                    "size": 10})
+                while True:
+                    read_exchange = read_from_exchange(exchange)
+                    if read_exchange['type'] == 'ack':
+                        print("Got msell ack")
+                        # wait_for_fill(30, read_exchange)
+                        break
+                    elif read_exchange['type'] == 'book':
+                        price_updater()
 
         else:
             read_exchange = read_from_exchange(exchange)
