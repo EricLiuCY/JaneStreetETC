@@ -54,29 +54,6 @@ def read_from_exchange(exchange):
     return json.loads(exchange.readline())
 
 
-# ~~~~~============== MAIN LOOP ==============~~~~~
-
-def main():
-    prices = OrderedDict()
-    ORDERS = 0
-    exchange = connect()
-    write_to_exchange(exchange, {"type": "hello", "team": team_name.upper()})
-    start_position = read_from_exchange(exchange)
-
-    bond_market_maker(exchange)
-
-    # try:
-    #     while True:
-    #         buy_bond(exchange, start_position, ORDERS, prices)
-    # except KeyboardInterrupt:
-    #     # f = open('BOND_HISTORY', 'w')
-    #     # pickle.dump(repr(ORDERS), f)
-    #     # f.close()
-    #     pass
-
-if __name__ == "__main__":
-    main()
-
 # ~~~~============== My Code ================ ~~~~~~~
 
 
@@ -219,24 +196,25 @@ def buy_bond(exchange, start_position, ORDERS, prices):
     #                 return_exchange['size']))
     #     return_exchange = read_from_exchange(exchange)
 
+# ~~~~~============== MAIN LOOP ==============~~~~~
+
 def main():
     prices = OrderedDict()
     ORDERS = 0
     exchange = connect()
-    # if os.path.isfile('./BOND_HISTORY'):
-    #     f = open('BOND_HISTORY', 'r')
-    #     ORDERS = pickle.load(f)
-    #     f.close()
     write_to_exchange(exchange, {"type": "hello", "team": team_name.upper()})
     start_position = read_from_exchange(exchange)
-    try:
-        while True:
-            buy_bond(exchange, start_position, ORDERS, prices)
-    except KeyboardInterrupt:
-        # f = open('BOND_HISTORY', 'w')
-        # pickle.dump(repr(ORDERS), f)
-        # f.close()
-        pass
+
+    bond_market_maker(exchange)
+
+    # try:
+    #     while True:
+    #         buy_bond(exchange, start_position, ORDERS, prices)
+    # except KeyboardInterrupt:
+    #     # f = open('BOND_HISTORY', 'w')
+    #     # pickle.dump(repr(ORDERS), f)
+    #     # f.close()
+    #     pass
 
 if __name__ == "__main__":
     main()
