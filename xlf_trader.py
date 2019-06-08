@@ -124,6 +124,8 @@ def trade_xlf(exchange, prices):
                         break
                     elif read_exchange['type'] == 'book':
                         price_updater()
+                    else:
+                        break
 
                 write_to_exchange(exchange, {"type": "convert", "order_id": generate_ID(), "symbol": "XLF", "dir": "SELL", "size": 10})
                 while True:
@@ -134,6 +136,8 @@ def trade_xlf(exchange, prices):
                         break
                     elif read_exchange['type'] == 'book':
                         price_updater()
+                    else:
+                        break
 
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "BOND", "dir": "SELL", "price": prices['BOND'][0],
                                    "size": 30})
@@ -145,6 +149,9 @@ def trade_xlf(exchange, prices):
                         break
                     elif read_exchange['type'] == 'book':
                         price_updater()
+                    else:
+                        break
+
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "GS", "dir": "SELL",
                                              "price": prices['GS'][0],
                                              "size": 20})
@@ -156,6 +163,9 @@ def trade_xlf(exchange, prices):
                         break
                     elif read_exchange['type'] == 'book':
                         price_updater()
+                    else:
+                        break
+
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "MS", "dir": "SELL",
                                              "price": prices['MS'][0],
                                              "size": 30})
@@ -167,6 +177,9 @@ def trade_xlf(exchange, prices):
                         break
                     elif read_exchange['type'] == 'book':
                         price_updater()
+                    else:
+                        break
+
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "WFC", "dir": "SELL",
                                              "price": prices['WFC'][0],
                                              "size": 20})
@@ -179,6 +192,8 @@ def trade_xlf(exchange, prices):
                         break
                     elif read_exchange['type'] == 'book':
                         price_updater()
+                    else:
+                        break
 
             if decision == 'SELL':
                 print("Decision to Sell")
@@ -205,6 +220,8 @@ def trade_xlf(exchange, prices):
                         break
                     elif read_exchange['type'] == 'book':
                         price_updater()
+                    else:
+                        break
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "GS", "dir": "BUY",
                                              "price": prices['GS'][1],
                                              "size": 20})
@@ -223,6 +240,8 @@ def trade_xlf(exchange, prices):
                         break
                     elif read_exchange['type'] == 'book':
                         price_updater()
+                    else:
+                        break
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "MS", "dir": "BUY",
                                              "price": prices['MS'][1],
                                              "size": 30})
@@ -241,6 +260,8 @@ def trade_xlf(exchange, prices):
                         break
                     elif read_exchange['type'] == 'book':
                         price_updater()
+                    else:
+                        break
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "WFC", "dir": "BUY",
                                              "price": prices['WFC'][1],
                                              "size": 20})
@@ -259,6 +280,8 @@ def trade_xlf(exchange, prices):
                         break
                     elif read_exchange['type'] == 'book':
                         price_updater()
+                    else:
+                        break
                 write_to_exchange(exchange,
                                   {"type": "convert", "order_id": generate_ID(), "symbol": "XLF", "dir": "BUY",
                                    "size": 10})
@@ -270,6 +293,8 @@ def trade_xlf(exchange, prices):
                         break
                     elif read_exchange['type'] == 'book':
                         price_updater()
+                    else:
+                        break
                 write_to_exchange(exchange,
                                   {"type": "add", "order_id": generate_ID(), "symbol": "XLF", "dir": "SELL",
                                    "price": prices['XLF'][0],
@@ -278,12 +303,20 @@ def trade_xlf(exchange, prices):
                     read_exchange = read_from_exchange(exchange)
                     if read_exchange['type'] == 'reject':
                         print("The exchange REJECTED:", read_exchange, file=sys.stderr)
+                        while True:
+                            read_exchange = read_from_exchange(exchange)
+                            if read_exchange['type'] == 'book':
+                                price_updater()
+                            else:
+                                break
                     if read_exchange['type'] == 'ack':
                         print("Got xsell ack")
                         # wait_for_fill(30, read_exchange)
                         break
                     elif read_exchange['type'] == 'book':
                         price_updater()
+                    else:
+                        break
 
         else:
             break
