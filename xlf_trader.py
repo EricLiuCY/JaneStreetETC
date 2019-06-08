@@ -193,6 +193,8 @@ def trade_xlf(exchange, prices):
                 while True:
 
                     read_exchange = read_from_exchange(exchange)
+                    if read_exchange['type'] == 'reject':
+                        print("The exchange REJECTED:", read_exchange, file=sys.stderr)
                     if read_exchange['type'] == 'ack':
                         print("Got bbuy ack")
                         wait_for_fill(30, read_exchange)
