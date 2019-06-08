@@ -20,7 +20,7 @@ test_mode = True
 # 0 is prod-like
 # 1 is slower
 # 2 is empty
-test_exchange_index=1
+test_exchange_index=0
 prod_exchange_hostname="production"
 
 port=25000 + (test_exchange_index if test_mode else 0)
@@ -38,25 +38,45 @@ pos_xlf =0
 ID_array = []
 
 
-xlf_buy   = None
-xlf_sell  = None
-xlf_ema   = None
+# xlf_buy   = None
+# xlf_sell  = None
+# xlf_ema   = None
+#
+# bond_buy  = None
+# bond_sell = None
+#
+# valbz_buy = None
+# valbz_sell = None
+#
+# vale_buy = None
+# vale_sell = None
+#
+# gs_buy    = None
+# gs_sell   = None
+# ms_buy    = None
+# ms_sell   = None
+# wfc_buy   = None
+# wfc_sell  = None
 
-bond_buy  = None
-bond_sell = None
+xlf_buy   = 0
+xlf_sell  = 0
+xlf_ema   = 0
 
-valbz_buy = None
-valbz_sell = None
+bond_buy  = 0
+bond_sell = 0
 
-vale_buy = None
-vale_sell = None
+valbz_buy = 0
+valbz_sell = 0
 
-gs_buy    = None
-gs_sell   = None
-ms_buy    = None
-ms_sell   = None
-wfc_buy   = None
-wfc_sell  = None
+vale_buy = 0
+vale_sell = 0
+
+gs_buy    = 0
+gs_sell   = 0
+ms_buy    = 0
+ms_sell   = 0
+wfc_buy   = 0
+wfc_sell  = 0
 
 def generate_ID():
 
@@ -280,8 +300,13 @@ def main():
     global ms_buy, ms_sell
     global wfc_buy, wfc_sell
 
-    while xlf_buy is None or xlf_ema is None or bond_buy is None or bond_sell is None or gs_buy is None or gs_sell is None or ms_buy is None\
-            or ms_sell is None or wfc_buy is None or wfc_sell is None:
+    # while xlf_buy is None or xlf_ema is None or bond_buy is None or bond_sell is None or gs_buy is None or gs_sell is None or ms_buy is None\
+    #         or ms_sell is None or wfc_buy is None or wfc_sell is None:
+    #     print("waiting to begin")
+    #     dispatcher_init(exchange)
+
+    while xlf_buy !=0 or xlf_ema !=0 or bond_buy !=0 or bond_sell !=0 or gs_buy !=0 or gs_sell !=0 or ms_buy !=0\
+            or ms_sell !=0 or wfc_buy !=0 or wfc_sell !=0:
         print("waiting to begin")
         dispatcher_init(exchange)
 
