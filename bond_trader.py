@@ -19,7 +19,7 @@ test_mode = True
 # 0 is prod-like
 # 1 is slower
 # 2 is empty
-test_exchange_index=0
+test_exchange_index=1
 prod_exchange_hostname="production"
 
 port=25000 + (test_exchange_index if test_mode else 0)
@@ -129,6 +129,7 @@ def buy_bond(exchange, start_position, ORDERS):
             write_to_exchange(exchange,
                               {"type": "add", "order_id": ORDERID, "symbol": "BOND", "dir": "BUY", "price": 999,
                                "size": (50 - BUYNUM)})
+            BUYNUM = 50
             ORDERID += 1
             print("BUY ORDER PLACED OF SIZE: " + str(50 - BUYNUM))
             return read_from_exchange(exchange), BUYNUM, ORDERID
@@ -153,6 +154,7 @@ def buy_bond(exchange, start_position, ORDERS):
             write_to_exchange(exchange,
                               {"type": "add", "order_id": ORDERID, "symbol": "BOND", "dir": "SELL", "price": 1001,
                                "size": (50 - SELLNUM)})
+            SELLNUM = 50
             ORDERID += 1
             print("SELL ORDER PLACED OF SIZE: " + str(50-SELLNUM))
             return read_from_exchange(exchange), SELLNUM, ORDERID
