@@ -12,9 +12,9 @@ def etf_decision(etf, bond, gs, ms, wfc):
     etf_to_buy = etf[0]  # TODO double check
     etf_to_sell = etf[1]
 
-    if etf_to_buy < etf_fair:
+    if etf_to_buy > etf_fair:
         return "BUY", EMA
-    elif etf_to_sell > etf_fair:
+    elif etf_to_sell < etf_fair:
         return "SELL", EMA
     else:
         return "NOTHING", EMA
