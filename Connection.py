@@ -153,16 +153,20 @@ def read_from_exchange(exchange):
 
 def redo_position(exchange):
     if pos_bond > 70 | pos_gs > 80 | pos_ms > 70 | pos_wfc > 80:
+        print("clear position")
         write_to_exchange(exchange,
                           {"type": "convert", "order_id": generate_ID(), "symbol": "XLF", "dir": "BUY", "size": 10})
     if pos_bond < -70 | pos_gs < -80 | pos_ms < -70 | pos_wfc < -80:
+        print("clear position")
         write_to_exchange(exchange,
                           {"type": "convert", "order_id": generate_ID(), "symbol": "XLF", "dir": "SELL", "size": 10})
 
     if pos_xlf < -90:
+        print("clear position")
         write_to_exchange(exchange,
                           {"type": "convert", "order_id": generate_ID(), "symbol": "XLF", "dir": "BUY", "size": 10})
     if pos_xlf > 90:
+        print("clear position")
         write_to_exchange(exchange,
                           {"type": "convert", "order_id": generate_ID(), "symbol": "XLF", "dir": "SELL", "size": 10})
 
@@ -251,7 +255,6 @@ def dispatcher(exchange):
 
 
     if decision == 'BUY':
-        print("Decision to Buy")
 
         if pos_bond < -50:
             write_to_exchange(exchange,
@@ -280,7 +283,6 @@ def dispatcher(exchange):
                                          "size": 20})
 
     if decision == 'SELL':
-        print("Decision to Sell")
 
         if pos_xlf < -50:
             write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "BOND", "dir": "BUY",
