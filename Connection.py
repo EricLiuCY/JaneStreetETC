@@ -20,7 +20,7 @@ test_mode = True
 # 0 is prod-like
 # 1 is slower
 # 2 is empty
-test_exchange_index=0
+test_exchange_index=1
 prod_exchange_hostname="production"
 
 port=25000 + (test_exchange_index if test_mode else 0)
@@ -317,6 +317,7 @@ def main():
     while xlf_buy !=0 or xlf_ema !=0 or bond_buy !=0 or bond_sell !=0 or gs_buy !=0 or gs_sell !=0 or ms_buy !=0\
             or ms_sell !=0 or wfc_buy !=0 or wfc_sell !=0:
         print("waiting to begin")
+        redo_position(exchange)
         dispatcher_init(exchange)
 
     while True:
