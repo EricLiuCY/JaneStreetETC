@@ -217,7 +217,7 @@ def trade_xlf(exchange, prices):
                                            "price": prices['GS'][0],
                                            "size": 20})
                         break
-                    if read_exchange['type'] == 'ack':
+                    elif read_exchange['type'] == 'ack':
                         print("Got gbuy ack")
                         wait_for_fill(30, read_exchange)
                         break
