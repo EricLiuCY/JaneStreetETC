@@ -167,6 +167,7 @@ def trade_xlf(exchange):
 
                     if read_exchange['type'] == 'reject':
                         print("Rejected, returning")
+                        print("The exchange replied:", read_exchange, file=sys.stderr)
                         break
                     elif read_exchange['type'] == 'ack':
                         print("BOND SELL ACKNOWLEDGED")
