@@ -6,6 +6,7 @@ import os
 import sys
 import socket
 import json
+from bond import bond_pricing
 
 # ~~~~~============== CONFIGURATION  ==============~~~~~
 # replace REPLACEME with your team name!
@@ -41,19 +42,20 @@ def read_from_exchange(exchange):
 
 ORDERS = OrderedDict()
 
-def buy_bond():
-    fair_price = 1000
-
-
+def buy_bond(exchange, start_position):
+    print("The exchange replied:", read_from_exchange(exchange), file=sys.stderr)
 
 def main():
+    exchange = connect()
     if os.path.isfile('./BOND_HISTORY'):
         f = open('BOND_HISTORY', 'r')
         ORDERS = pickle.load(f)
         f.close()
+    write_to_exchange(exchange, {"type": "hello", "team": team_name.upper()})
+    start_position = read_from_exchange(exchange)
     try:
         while True:
-            buy_bond()
+            buy_bond(exchange, start_position)
     except KeyboardInterrupt:
         f = open('BOND_HISTORY', 'w')
         pickle.dump(ORDERS, f)
