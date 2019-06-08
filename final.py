@@ -20,7 +20,7 @@ def generate_ID():
 team_name="loremipsum"
 # This variable dictates whether or not the bot is connecting to the prod
 # or test exchange. Be careful with this switch!
-test_mode = False
+test_mode = True
 
 # This setting changes which test exchange is connected to.
 # 0 is prod-like
@@ -159,9 +159,10 @@ def trade_xlf(exchange):
                         return
                     elif read_exchange['type'] == 'ack':
                         print("BOND SELL ACKNOWLEDGED")
-                    elif read_exchange['type'] == 'fill':
-                        print("BOND SELL FILLED")
                         break
+                    # elif read_exchange['type'] == 'fill':
+                    #     print("BOND SELL FILLED")
+                    #     break
 
             if position['GS'] >= -50 and position['GS'] <= 80:
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "GS", "dir": "SELL",
@@ -237,9 +238,10 @@ def trade_xlf(exchange):
                         return
                     elif read_exchange['type'] == 'ack':
                         print("BOND BUY ACKNOWLEDGED")
-                    elif read_exchange['type'] == 'fill':
-                        print("BOND BUY FILLED")
                         break
+                    # elif read_exchange['type'] == 'fill':
+                    #     print("BOND BUY FILLED")
+                    #     break
 
             if position['GS'] <= -50:
                 write_to_exchange(exchange, {"type": "add", "order_id": generate_ID(), "symbol": "GS", "dir": "BUY",
